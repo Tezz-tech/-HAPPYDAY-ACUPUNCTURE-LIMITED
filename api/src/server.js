@@ -2,14 +2,15 @@ import { loadEnv } from './env.js';
 import { createLogger } from './lib/logger.js';
 import { connectDb } from './db.js';
 import { createApp } from './app.js';
-import { seed } from '../scripts/seed.js';
+import { seed, seedAdmin } from '../scripts/seed.js';
 import { startJobs } from './jobs/scheduler.js';
 
 const env = loadEnv();
 const logger = createLogger({ level: env.LOG_LEVEL });
 const db = await connectDb({ uri: env.MONGODB_URI, logger });
 await seed();
-const app = createApp({ env, logger, rateLimit: env.NODE_ENV === 'production' });
+await seedAdmin(env);
+const app = createApp({ env, logger, rateLimit: env.NODE_ENV === 'production', sessionSecret: env.SESSION_SECRET ?? undefined });
 const jobs = startJobs({ logger });
 
 const server = app.listen(env.PORT, () => {

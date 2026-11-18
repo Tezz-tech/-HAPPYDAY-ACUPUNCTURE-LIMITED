@@ -258,7 +258,7 @@ export async function transition(bookingId, to, opts) {
       const from = booking.status;
       booking.status = to;
       booking.holdsSlot = HOLDING_STATUSES.includes(to);
-      Object.assign(booking, opts.extra ?? {});
+      booking.set(opts.extra ?? {});
       if (RELEASING.has(to)) {
         await SeatLock.updateMany({ bookingId: booking._id }, { $set: { holds: false } }, { session });
       }

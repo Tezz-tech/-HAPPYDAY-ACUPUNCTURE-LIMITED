@@ -186,3 +186,33 @@ export const BookingEvent = model('BookingEvent', BookingEventSchema);
 export const Settings = model('Settings', SettingsSchema);
 export const Inquiry = model('Inquiry', InquirySchema);
 export const Testimonial = model('Testimonial', TestimonialSchema);
+
+/** Admin accounts. Passwords are stored as scrypt hashes (see services/auth.js). */
+const UserSchema = new Schema(
+  {
+    email: { type: String, required: true, unique: true, lowercase: true, trim: true },
+    passwordHash: { type: String, required: true },
+    role: { type: String, enum: ['owner', 'staff'], default: 'staff' },
+    mustChangePassword: { type: Boolean, default: true },
+    failedLogins: { type: Number, default: 0 },
+    lockedUntil: { type: Date, default: null },
+    lastLoginAt: { type: Date, default: null },
+  },
+  opts,
+);
+
+/** Who changed what. Patient health notes are never written here (docs/05). */
+const AuditLogSchema = new Schema(
+  {
+    userId: { type: Schema.Types.ObjectId, default: null },
+    action: { type: String, required: true },
+    entity: { type: String, required: true },
+    entityId: { type: String, default: '' },
+    diff: { type: Schema.Types.Mixed, default: {} },
+    at: { type: Date, default: Date.now },
+  },
+  { timestamps: false },
+);
+
+export const User = model('User', UserSchema);
+export const AuditLog = model('AuditLog', AuditLogSchema);

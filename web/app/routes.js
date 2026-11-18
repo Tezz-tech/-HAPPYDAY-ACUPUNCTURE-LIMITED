@@ -20,5 +20,6 @@ export default [
   route('book', 'routes/book.jsx'),
   route('book/confirmed/:ref', 'routes/book-confirmed.jsx'),
   route('booking/:ref', 'routes/booking.jsx'),
+  route('admin', 'routes/admin.jsx'),
   route('styleguide', 'routes/styleguide.jsx'),
 ];

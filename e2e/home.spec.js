@@ -23,9 +23,13 @@ test.describe('home page', () => {
   test('the accordion opens one answer at a time', async ({ page }) => {
     await page.goto('/');
     const first = page.getByRole('button', { name: 'Does acupuncture hurt?' });
+    // Centre the button first, so the fixed mobile action bar cannot sit over it.
+    await first.evaluate((el) => el.scrollIntoView({ block: 'center' }));
     await first.click();
     await expect(first).toHaveAttribute('aria-expanded', 'true');
-    await page.getByRole('button', { name: 'Are the needles clean?' }).click();
+    const second = page.getByRole('button', { name: 'Are the needles clean?' });
+    await second.evaluate((el) => el.scrollIntoView({ block: 'center' }));
+    await second.click();
     await expect(first).toHaveAttribute('aria-expanded', 'false');
   });
 

@@ -10,6 +10,9 @@ import { bookingsRouter } from './routes/bookings.js';
 import { inquiriesRouter } from './routes/inquiries.js';
 import { rateLimits } from './middleware/rateLimits.js';
 import { BookingError } from './services/bookingService.js';
+import { authRouter } from './routes/auth.js';
+import { adminRouter } from './routes/admin.js';
+import { sessionMiddleware, originCheck, cookieName } from './middleware/auth.js';
 
 /**
  * Builds the Express app. Kept separate from server.js so tests can mount it.
@@ -19,7 +22,7 @@ import { BookingError } from './services/bookingService.js';
  *   rateLimit?: boolean
  * }} deps
  */
-export function createApp({ env, logger = createLogger({ level: env.LOG_LEVEL }), rateLimit = true }) {
+export function createApp({ env, logger = createLogger({ level: env.LOG_LEVEL }), rateLimit = true, sessionSecret = env.SESSION_SECRET ?? 'dev-only-secret-change-me' }) {
   const app = express();
   app.disable('x-powered-by');
   app.set('trust proxy', 1);
@@ -43,6 +46,8 @@ export function createApp({ env, logger = createLogger({ level: env.LOG_LEVEL })
   app.use('/api/v1/public', publicRouter({ limits }));
   app.use('/api/v1/bookings', bookingsRouter({ limits }));
   app.use('/api/v1/inquiries', inquiriesRouter({ limits }));
+  app.use('/api/v1/auth', sessionMiddleware({ secret: sessionSecret, name: cookieName(env) }), authRouter({ env, secret: sessionSecret, enabled: rateLimit }));
+  app.use('/api/v1/admin', originCheck(env.WEB_ORIGIN), sessionMiddleware({ secret: sessionSecret, name: cookieName(env) }), adminRouter());
 
   app.use((req, res) => {
     res.status(404).json({ error: { code: 'NOT_FOUND', message: 'Not found' } });

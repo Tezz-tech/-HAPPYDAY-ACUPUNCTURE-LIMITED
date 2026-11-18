@@ -17,7 +17,7 @@
     "build": "npm run build -w web && npm run lint-copy",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "test": "vitest run",
+    "test": "npm run test -w api",
     "test:api": "npm run test -w api",
     "test:e2e": "playwright test",
     "lint-copy": "node scripts/lint-copy.js",
