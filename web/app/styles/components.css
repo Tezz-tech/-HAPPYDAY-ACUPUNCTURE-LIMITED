@@ -1,0 +1,746 @@
+/*
+ * Component styles that are awkward as utility classes (docs/02 §4–§7).
+ * Everything here uses design tokens from app.css, never raw palette values.
+ */
+
+/* ---------- Type scale (docs/02 §4): clamp from 360 px to 1440 px ---------- */
+.type-display-xl {
+  font: 400 clamp(52px, 26.67px + 7.037vw, 128px) / 0.95 var(--font-display);
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+.type-display-l {
+  font: 400 clamp(40px, 24px + 4.444vw, 88px) / 1 var(--font-display);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.type-display-m {
+  font: 400 clamp(32px, 24px + 2.222vw, 56px) / 1.05 var(--font-display);
+  text-wrap: balance;
+}
+.type-display-s {
+  font: 500 clamp(24px, 21.33px + 0.741vw, 32px) / 1.15 var(--font-display);
+  text-wrap: balance;
+}
+.type-lead {
+  font: 400 clamp(18px, 16.67px + 0.37vw, 22px) / 1.5 var(--font-sans);
+  max-width: 34ch;
+  text-wrap: pretty;
+}
+.type-body {
+  font: 400 clamp(16px, 15.67px + 0.0926vw, 17px) / 1.6 var(--font-sans);
+  max-width: 64ch;
+  text-wrap: pretty;
+}
+.type-small {
+  font: 400 14px / 1.5 var(--font-sans);
+}
+/* Section labels and acupoint codes (docs/02 §4). */
+.label {
+  font: 500 12px / 1.2 var(--font-sans);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.08em;
+}
+.label-code {
+  font-variant-caps: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.label-pinyin {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.06em;
+}
+
+/* ---------- Buttons (docs/02 §7) ---------- */
+.btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0 22px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font: 500 15px / 1 var(--font-sans);
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    transform var(--duration-t1) var(--ease-out-expo),
+    color var(--duration-t2) var(--ease-out-expo),
+    border-color var(--duration-t2) var(--ease-out-expo);
+  -webkit-tap-highlight-color: transparent;
+}
+/* The hover fill sweeps left to right underneath the label. */
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--sweep);
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path var(--duration-t2) var(--ease-out-expo);
+}
+.btn:hover::before,
+.btn:focus-visible::before {
+  clip-path: inset(0 0 0 0);
+}
+.btn:active {
+  transform: scale(0.98);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.btn-primary {
+  --sweep: var(--color-forest-500);
+  background: var(--color-forest-700);
+  color: var(--color-paper);
+}
+.btn-secondary {
+  --sweep: var(--color-ink);
+  background: transparent;
+  color: var(--color-ink);
+  border-color: var(--color-ink);
+}
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+  color: var(--color-paper);
+}
+.btn-whatsapp {
+  --sweep: var(--color-ink);
+  background: transparent;
+  color: var(--color-ink);
+  border-color: var(--color-ink);
+}
+.btn-whatsapp:hover,
+.btn-whatsapp:focus-visible {
+  color: var(--color-paper);
+}
+.btn-whatsapp .btn-icon {
+  color: var(--color-forest-700);
+  transition: color var(--duration-t2) var(--ease-out-expo);
+}
+.btn-whatsapp:hover .btn-icon,
+.btn-whatsapp:focus-visible .btn-icon {
+  color: var(--color-gold-400);
+}
+.btn-ghost {
+  --sweep: transparent;
+  min-height: 44px;
+  padding: 0;
+  background: transparent;
+  color: var(--color-ink);
+  border-radius: 0;
+}
+.btn-ghost::before {
+  display: none;
+}
+.btn-icon-only {
+  width: 48px;
+  padding: 0;
+}
+@media (max-width: 767px) {
+  .btn-cta {
+    min-height: 52px;
+  }
+}
+.btn-on-dark.btn-secondary {
+  --sweep: var(--color-paper);
+  color: var(--color-paper);
+  border-color: var(--color-paper);
+}
+.btn-on-dark.btn-secondary:hover,
+.btn-on-dark.btn-secondary:focus-visible {
+  color: var(--color-forest-900);
+}
+
+/* ---------- Text links: a 1 px underline that draws in and retracts (docs/02 §6) ---------- */
+.link-underline {
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform var(--duration-t2) var(--ease-out-expo);
+}
+.link-underline:hover::after,
+.link-underline:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* ---------- Fields (docs/02 §7): floating label, 52 px, bone surface ---------- */
+.field {
+  position: relative;
+  width: 100%;
+}
+.field-input {
+  display: block;
+  width: 100%;
+  min-height: 52px;
+  padding: 22px 16px 8px;
+  background: var(--color-bone);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink);
+  font: 400 16px / 1.4 var(--font-sans);
+  appearance: none;
+  transition: border-color var(--duration-t1) var(--ease-out-expo);
+}
+textarea.field-input {
+  min-height: 120px;
+  padding-top: 26px;
+  resize: vertical;
+}
+select.field-input {
+  padding-right: 40px;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--color-ink) 50%),
+    linear-gradient(135deg, var(--color-ink) 50%, transparent 50%);
+  background-position:
+    calc(100% - 20px) 50%,
+    calc(100% - 15px) 50%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+.field-input:hover {
+  border-color: rgb(16 36 26 / 0.3);
+}
+.field-input:focus {
+  outline: none;
+  border-color: var(--color-forest-500);
+}
+.field-input:focus-visible {
+  outline: 2px solid var(--color-forest-500);
+  outline-offset: 2px;
+}
+.field-input[aria-invalid="true"] {
+  border-color: var(--color-cinnabar);
+}
+.field-label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-stone-600);
+  font: 400 16px / 1.2 var(--font-sans);
+  pointer-events: none;
+  transform-origin: left center;
+  transition:
+    top var(--duration-t2) var(--ease-out-expo),
+    font-size var(--duration-t2) var(--ease-out-expo),
+    color var(--duration-t2) var(--ease-out-expo);
+}
+textarea.field-input ~ .field-label {
+  top: 18px;
+  transform: none;
+}
+.field-input:focus ~ .field-label,
+.field-input:not(:placeholder-shown) ~ .field-label,
+.field-input.is-floated ~ .field-label {
+  top: 9px;
+  transform: none;
+  font-size: 12px;
+  color: var(--color-stone-600);
+}
+.field-input:focus ~ .field-label {
+  color: var(--color-forest-500);
+}
+.field-error {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  margin: 6px 0 0;
+  color: var(--color-cinnabar);
+  font: 400 14px / 1.45 var(--font-sans);
+}
+.field-hint {
+  margin: 6px 0 0;
+  color: var(--color-stone-600);
+  font: 400 14px / 1.45 var(--font-sans);
+}
+
+/* ---------- Choice chips (docs/02 §7) ---------- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+  background: var(--color-bone);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink);
+  font: 500 15px / 1 var(--font-sans);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-t2) var(--ease-out-expo),
+    color var(--duration-t2) var(--ease-out-expo);
+}
+.chip:hover {
+  border-color: rgb(16 36 26 / 0.3);
+}
+.chip[aria-pressed="true"],
+.chip[aria-checked="true"] {
+  background: var(--color-forest-700);
+  border-color: var(--color-forest-700);
+  color: var(--color-paper);
+}
+.chip-point {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 10px;
+  border-radius: 999px;
+  background: var(--color-gold-400);
+  opacity: 0;
+  transition: opacity var(--duration-t2) var(--ease-out-expo);
+}
+.chip[aria-pressed="true"] .chip-point,
+.chip[aria-checked="true"] .chip-point {
+  opacity: 1;
+}
+
+/* ---------- Hairline rules with a label on the line (docs/02 §5.1) ---------- */
+.rule {
+  position: relative;
+  border-top: 1px solid var(--color-line);
+}
+.rule-dark {
+  border-top-color: var(--color-line-dark);
+}
+.rule-label {
+  position: absolute;
+  top: -0.55em;
+  left: var(--gutter, 0px);
+  padding-right: 14px;
+  background: var(--rule-bg, var(--color-paper));
+  color: var(--color-stone-600);
+  line-height: 1.2;
+}
+.rule-dark .rule-label {
+  color: var(--color-jade-300);
+}
+
+/* ---------- Pictures: duotone first, clip reveal once (docs/02 §5.7) ---------- */
+.pic {
+  margin: 0;
+}
+.pic-frame {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-forest-900);
+  background-size: cover;
+  background-position: center;
+}
+.pic-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.reveal-clip picture,
+.reveal-clip img {
+  display: block;
+  clip-path: inset(100% 0 0 0);
+  transform: scale(1.08);
+  transition:
+    clip-path 900ms var(--ease-out-expo),
+    transform 900ms var(--ease-out-expo);
+}
+.reveal-clip.is-in picture,
+.reveal-clip.is-in img {
+  clip-path: inset(0 0 0 0);
+  transform: scale(1);
+}
+.pic-caption {
+  margin-top: 12px;
+  color: var(--color-stone-600);
+  font: 400 14px / 1.45 var(--font-sans);
+}
+
+/* ---------- Sheet (docs/02 §7): native dialog for focus trap and Esc ---------- */
+.sheet {
+  width: min(560px, 100vw);
+  max-height: 88dvh;
+  margin: auto 0 0;
+  padding: 0;
+  background: var(--color-bone);
+  color: var(--color-ink);
+  border: 0;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  box-shadow: var(--shadow-float);
+  overflow: auto;
+}
+@media (min-width: 768px) {
+  .sheet {
+    margin: auto;
+    border-radius: var(--radius-md);
+  }
+}
+.sheet::backdrop {
+  background: rgb(11 42 26 / 0.4);
+}
+.sheet[open] {
+  animation: sheet-in var(--duration-t3) var(--ease-out-expo);
+}
+.sheet[open]::backdrop {
+  animation: fade-in var(--duration-t2) ease-out;
+}
+@keyframes sheet-in {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---------- Surfaces ---------- */
+.surface-dark {
+  background: var(--color-forest-900);
+  color: var(--color-paper);
+}
+
+/* ---------- Paper grain: fixed, never repaints on scroll (docs/02 §2) ---------- */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.035;
+  will-change: transform;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* ---------- Reduced motion: fades only, nothing pinned or moving (docs/02 §6) ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-clip picture,
+  .reveal-clip img {
+    clip-path: none;
+    transform: none;
+    transition: opacity 200ms ease-out;
+    opacity: 0;
+  }
+  .reveal-clip.is-in picture,
+  .reveal-clip.is-in img {
+    opacity: 1;
+  }
+  .btn:active {
+    transform: none;
+  }
+  .btn::before {
+    transition: clip-path 200ms ease-out;
+  }
+  .sheet[open],
+  .sheet[open]::backdrop {
+    animation: none;
+  }
+}
+
+/* ---------- Checkbox ---------- */
+.checkbox-wrap {
+  display: grid;
+  gap: 6px;
+}
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-height: 44px;
+  padding: 8px 0;
+  color: var(--color-ink);
+  font: 400 15px / 1.5 var(--font-sans);
+  cursor: pointer;
+}
+.checkbox-input {
+  appearance: none;
+  display: grid;
+  place-content: center;
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  margin: 1px 0 0;
+  background: var(--color-bone);
+  border: 1px solid rgb(16 36 26 / 0.45);
+  border-radius: 3px;
+  cursor: pointer;
+}
+.checkbox-input:checked {
+  background: var(--color-forest-700);
+  border-color: var(--color-forest-700);
+}
+.checkbox-input:checked::after {
+  content: "";
+  width: 9px;
+  height: 5px;
+  border-left: 2px solid var(--color-paper);
+  border-bottom: 2px solid var(--color-paper);
+  transform: translate(0, -1px) rotate(-45deg);
+}
+.checkbox-input[aria-invalid="true"] {
+  border-color: var(--color-cinnabar);
+}
+.checkbox-input:focus-visible {
+  outline: 2px solid var(--color-forest-500);
+  outline-offset: 2px;
+}
+
+/* ---------- Segmented control ---------- */
+.segmented {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 3px;
+  background: var(--color-bone);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+}
+.segmented-item {
+  min-height: 44px;
+  padding: 0 16px;
+  background: transparent;
+  border: 0;
+  border-radius: 2px;
+  color: var(--color-ink);
+  font: 500 15px / 1 var(--font-sans);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-t2) var(--ease-out-expo),
+    color var(--duration-t2) var(--ease-out-expo);
+}
+.segmented-item[aria-checked="true"] {
+  background: var(--color-forest-700);
+  color: var(--color-paper);
+}
+
+/* ---------- Accordion (docs/02 §7) ---------- */
+.accordion {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--color-line);
+}
+.accordion-item {
+  border-bottom: 1px solid var(--color-line);
+}
+.accordion-heading {
+  margin: 0;
+  font: inherit;
+}
+.accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  min-height: 56px;
+  padding: 16px 0;
+  background: transparent;
+  border: 0;
+  color: var(--color-ink);
+  font: 500 clamp(17px, 16px + 0.2vw, 19px) / 1.35 var(--font-sans);
+  text-align: left;
+  cursor: pointer;
+}
+.accordion-plus {
+  display: inline-flex;
+  flex: 0 0 auto;
+  color: var(--color-forest-700);
+  transition: transform var(--duration-t3) var(--ease-out-expo);
+}
+.accordion-trigger[aria-expanded="true"] .accordion-plus {
+  transform: rotate(45deg);
+}
+.accordion-panel {
+  overflow: hidden;
+}
+.accordion-answer {
+  margin: 0;
+  padding: 0 40px 22px 0;
+  color: var(--color-stone-600);
+  font: 400 16px / 1.6 var(--font-sans);
+  max-width: 64ch;
+  text-wrap: pretty;
+}
+
+/* ---------- Toast ---------- */
+.toast-region {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 90;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+.toast {
+  max-width: 420px;
+  padding: 14px 18px;
+  background: var(--color-forest-900);
+  color: var(--color-paper);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-float);
+  font: 400 15px / 1.4 var(--font-sans);
+  animation: toast-in var(--duration-t3) var(--ease-out-expo);
+}
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Labels, logo and seal ---------- */
+.label-point {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin: 0 0.6em;
+  vertical-align: middle;
+  border-radius: 999px;
+  background: var(--color-gold-400);
+}
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+.logo-dark {
+  color: var(--color-paper);
+}
+.logo-words {
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.logo-name {
+  font: 500 24px / 1 var(--font-display);
+  letter-spacing: -0.01em;
+}
+.logo-sub {
+  margin-top: 4px;
+  font: 500 11px / 1 var(--font-sans);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.logo-stacked {
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+}
+.seal {
+  display: block;
+  flex: 0 0 auto;
+}
+.seal-stamp {
+  animation: seal-stamp 520ms var(--ease-out-expo) both;
+  transform-origin: center;
+}
+@keyframes seal-stamp {
+  from {
+    opacity: 0;
+    transform: scale(1.15) rotate(-6deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(-3deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .seal-stamp {
+    animation: fade-in 200ms ease-out both;
+    transform: rotate(-3deg);
+  }
+  .toast {
+    animation: none;
+  }
+}
+
+/* ---------- Sheet layout ---------- */
+.sheet-inner {
+  display: grid;
+  gap: 16px;
+  padding: 20px 20px 28px;
+}
+.sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.sheet-body {
+  display: grid;
+  gap: 16px;
+}
+
+/* ---------- Styleguide layout (dev only) ---------- */
+.styleguide {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 48px);
+}
+.sg-section {
+  display: grid;
+  gap: 24px;
+  padding: clamp(56px, 8vw, 120px) 0;
+}
+.sg-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+.sg-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+@media (min-width: 768px) {
+  .sg-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.sg-dark {
+  --rule-bg: var(--color-forest-900);
+  margin-inline: calc(50% - 50vw);
+  padding-inline: clamp(20px, 4vw, 48px);
+  background: var(--color-forest-900);
+  color: var(--color-paper);
+}
+.sg-dark .type-lead,
+.sg-dark h2 {
+  color: var(--color-paper);
+}

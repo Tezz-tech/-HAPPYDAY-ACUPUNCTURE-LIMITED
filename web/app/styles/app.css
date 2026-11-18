@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import './fonts.css';
+@import './components.css';
 
 /*
  * Design tokens from docs/02. The default Tailwind palette and type scale are
@@ -27,6 +28,8 @@
   --color-paper: #f4efe6;
   --color-bone: #fbf8f2;
   --color-cinnabar: #b5432f;
+  --color-line: rgb(16 36 26 / 0.12);
+  --color-line-dark: rgb(244 239 230 / 0.14);
 
   --font-display: 'Gambetta', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
   --font-sans: 'Switzer', 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;

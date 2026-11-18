@@ -1,4 +1,5 @@
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
+import { ToastProvider } from './components/ui/ToastProvider.jsx';
 import './styles/app.css';
 
 /**
@@ -28,5 +29,9 @@ export function Layout({ children }) {
 
 /** @returns {import('react').ReactElement} */
 export default function Root() {
-  return <Outlet />;
+  return (
+    <ToastProvider>
+      <Outlet />
+    </ToastProvider>
+  );
 }

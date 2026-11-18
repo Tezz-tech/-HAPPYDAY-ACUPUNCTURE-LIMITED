@@ -11,5 +11,6 @@ export default [
   route('privacy', 'routes/privacy.jsx'),
   route('terms', 'routes/terms.jsx'),
   route('404', 'routes/not-found.jsx'),
+  route('styleguide', 'routes/styleguide.jsx'),
   route('*', 'routes/catch-all.jsx'),
 ];
