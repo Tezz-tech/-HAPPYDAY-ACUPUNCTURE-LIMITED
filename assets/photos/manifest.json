@@ -1,0 +1,455 @@
+{
+  "_readme": "All photos are WhatsApp-compressed phone shots (750-960px wide). They were colour-corrected, denoised and cropped, and faces were blurred. Never display any image wider than maxDisplayWidthCss (approx. native/1.5), or it will look soft on retina screens. Swap in original-resolution files when the client supplies them: keep the same ids so nothing else changes. The duotone versions use ink #0F2A1D -> paper #F4EFE6.",
+  "photos": [
+    {
+      "id": "clinic-treatment-room",
+      "folder": "full",
+      "files": {
+        "avif": "full/clinic-treatment-room.avif",
+        "webp": "full/clinic-treatment-room.webp",
+        "jpg": "full/clinic-treatment-room.jpg"
+      },
+      "width": 960,
+      "height": 1280,
+      "maxDisplayWidthCss": 640,
+      "alt": "A patient resting on a treatment bed in a bright clinic room during an acupuncture session. Face blurred.",
+      "notes": "Only wide shot of the room. Face blurred. Use small (gallery), not as a hero.",
+      "privacy": "face blurred"
+    },
+    {
+      "id": "treatment-abdomen-ring",
+      "folder": "full",
+      "files": {
+        "avif": "full/treatment-abdomen-ring.avif",
+        "webp": "full/treatment-abdomen-ring.webp",
+        "jpg": "full/treatment-abdomen-ring.jpg"
+      },
+      "width": 762,
+      "height": 880,
+      "maxDisplayWidthCss": 508,
+      "alt": "A ring of acupuncture needles radiating around a point on the abdomen.",
+      "notes": "Signature image. The 'abdomen-ring' square crop is the most graphic photo in the set; use it in the hero or as the Digestive health image.",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "treatment-forehead-points",
+      "folder": "full",
+      "files": {
+        "avif": "full/treatment-forehead-points.avif",
+        "webp": "full/treatment-forehead-points.webp",
+        "jpg": "full/treatment-forehead-points.jpg"
+      },
+      "width": 750,
+      "height": 1000,
+      "maxDisplayWidthCss": 500,
+      "alt": "Fine acupuncture needles placed along the brow line of a patient resting on a treatment bed. Face blurred for privacy.",
+      "notes": "Face blurred. Secondary use only (e.g. Head & face treatment page). Prefer the 'forehead-needles' crop.",
+      "privacy": "face blurred"
+    },
+    {
+      "id": "treatment-leg-sterile-needles",
+      "folder": "full",
+      "files": {
+        "avif": "full/treatment-leg-sterile-needles.avif",
+        "webp": "full/treatment-leg-sterile-needles.webp",
+        "jpg": "full/treatment-leg-sterile-needles.jpg"
+      },
+      "width": 490,
+      "height": 1000,
+      "maxDisplayWidthCss": 326,
+      "alt": "Acupuncture needles along a patient's lower leg and foot, with an opened single-use sterile needle pack on the bed.",
+      "notes": "Good trust image: shows single-use needle packaging. Use on 'Your visit' safety section.",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "treatment-lower-leg",
+      "folder": "full",
+      "files": {
+        "avif": "full/treatment-lower-leg.avif",
+        "webp": "full/treatment-lower-leg.webp",
+        "jpg": "full/treatment-lower-leg.jpg"
+      },
+      "width": 762,
+      "height": 1016,
+      "maxDisplayWidthCss": 508,
+      "alt": "Rows of acupuncture needles placed along both sides of a patient's lower leg.",
+      "notes": "Dramatic pattern; strong for Pain relief / Muscles & joints.",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "treatment-scalp-points",
+      "folder": "full",
+      "files": {
+        "avif": "full/treatment-scalp-points.avif",
+        "webp": "full/treatment-scalp-points.webp",
+        "jpg": "full/treatment-scalp-points.jpg"
+      },
+      "width": 602,
+      "height": 716,
+      "maxDisplayWidthCss": 401,
+      "alt": "Three acupuncture needles placed at the back of the head near the hairline.",
+      "notes": "Strong, anonymous. Good for Stress & sleep / Neurological pages.",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "treatment-topdown-head",
+      "folder": "full",
+      "files": {
+        "avif": "full/treatment-topdown-head.avif",
+        "webp": "full/treatment-topdown-head.webp",
+        "jpg": "full/treatment-topdown-head.jpg"
+      },
+      "width": 762,
+      "height": 1016,
+      "maxDisplayWidthCss": 508,
+      "alt": "View from above a patient lying face-up, with needles placed along the forehead hairline.",
+      "notes": "No identifiable face. Busy background; prefer 'yintang-forehead' crop.",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "abdomen-ring",
+      "folder": "detail",
+      "files": {
+        "avif": "detail/abdomen-ring.avif",
+        "webp": "detail/abdomen-ring.webp",
+        "jpg": "detail/abdomen-ring.jpg"
+      },
+      "width": 300,
+      "height": 300,
+      "maxDisplayWidthCss": 200,
+      "alt": "Eight needles radiating in a ring around a single point on the abdomen.",
+      "notes": "Square. Hero/brand-moment candidate.",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "forehead-needles",
+      "folder": "detail",
+      "files": {
+        "avif": "detail/forehead-needles.avif",
+        "webp": "detail/forehead-needles.webp",
+        "jpg": "detail/forehead-needles.jpg"
+      },
+      "width": 340,
+      "height": 202,
+      "maxDisplayWidthCss": 226,
+      "alt": "Close-up of fine needles placed along the brow line.",
+      "notes": "Crop sits above the eyes, so no face is visible.",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "knee-needles",
+      "folder": "detail",
+      "files": {
+        "avif": "detail/knee-needles.avif",
+        "webp": "detail/knee-needles.webp",
+        "jpg": "detail/knee-needles.jpg"
+      },
+      "width": 300,
+      "height": 270,
+      "maxDisplayWidthCss": 200,
+      "alt": "Close-up of needles around the knee.",
+      "notes": "",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "knee-points",
+      "folder": "detail",
+      "files": {
+        "avif": "detail/knee-points.avif",
+        "webp": "detail/knee-points.webp",
+        "jpg": "detail/knee-points.jpg"
+      },
+      "width": 310,
+      "height": 240,
+      "maxDisplayWidthCss": 206,
+      "alt": "Needles placed around the knees of a patient lying on a treatment bed.",
+      "notes": "Low resolution (310x240): thumbnails only.",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "lower-leg-needles",
+      "folder": "detail",
+      "files": {
+        "avif": "detail/lower-leg-needles.avif",
+        "webp": "detail/lower-leg-needles.webp",
+        "jpg": "detail/lower-leg-needles.jpg"
+      },
+      "width": 570,
+      "height": 500,
+      "maxDisplayWidthCss": 380,
+      "alt": "Needles placed in two rows along the lower leg.",
+      "notes": "",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "scalp-needles-close",
+      "folder": "detail",
+      "files": {
+        "avif": "detail/scalp-needles-close.avif",
+        "webp": "detail/scalp-needles-close.webp",
+        "jpg": "detail/scalp-needles-close.jpg"
+      },
+      "width": 400,
+      "height": 260,
+      "maxDisplayWidthCss": 266,
+      "alt": "Close-up of needles at the back of the head.",
+      "notes": "",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "sterile-needle-pack",
+      "folder": "detail",
+      "files": {
+        "avif": "detail/sterile-needle-pack.avif",
+        "webp": "detail/sterile-needle-pack.webp",
+        "jpg": "detail/sterile-needle-pack.jpg"
+      },
+      "width": 300,
+      "height": 160,
+      "maxDisplayWidthCss": 200,
+      "alt": "An opened single-use sterile acupuncture needle pack beside the patient.",
+      "notes": "Use small, next to hygiene copy.",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "yintang-forehead",
+      "folder": "detail",
+      "files": {
+        "avif": "detail/yintang-forehead.avif",
+        "webp": "detail/yintang-forehead.webp",
+        "jpg": "detail/yintang-forehead.jpg"
+      },
+      "width": 400,
+      "height": 280,
+      "maxDisplayWidthCss": 266,
+      "alt": "Needles placed at the forehead and between the brows, seen from above.",
+      "notes": "",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "abdomen-ring-duotone",
+      "folder": "duotone",
+      "files": {
+        "avif": "duotone/abdomen-ring-duotone.avif",
+        "webp": "duotone/abdomen-ring-duotone.webp",
+        "jpg": "duotone/abdomen-ring-duotone.jpg"
+      },
+      "width": 300,
+      "height": 300,
+      "maxDisplayWidthCss": 200,
+      "alt": "Eight needles radiating in a ring around a single point on the abdomen. (green-toned version)",
+      "notes": "Square. Hero/brand-moment candidate.",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "clinic-treatment-room-duotone",
+      "folder": "duotone",
+      "files": {
+        "avif": "duotone/clinic-treatment-room-duotone.avif",
+        "webp": "duotone/clinic-treatment-room-duotone.webp",
+        "jpg": "duotone/clinic-treatment-room-duotone.jpg"
+      },
+      "width": 960,
+      "height": 1280,
+      "maxDisplayWidthCss": 640,
+      "alt": "A patient resting on a treatment bed in a bright clinic room during an acupuncture session. Face blurred. (green-toned version)",
+      "notes": "Only wide shot of the room. Face blurred. Use small (gallery), not as a hero.",
+      "privacy": "face blurred"
+    },
+    {
+      "id": "forehead-needles-duotone",
+      "folder": "duotone",
+      "files": {
+        "avif": "duotone/forehead-needles-duotone.avif",
+        "webp": "duotone/forehead-needles-duotone.webp",
+        "jpg": "duotone/forehead-needles-duotone.jpg"
+      },
+      "width": 340,
+      "height": 202,
+      "maxDisplayWidthCss": 226,
+      "alt": "Close-up of fine needles placed along the brow line. (green-toned version)",
+      "notes": "Crop sits above the eyes, so no face is visible.",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "knee-needles-duotone",
+      "folder": "duotone",
+      "files": {
+        "avif": "duotone/knee-needles-duotone.avif",
+        "webp": "duotone/knee-needles-duotone.webp",
+        "jpg": "duotone/knee-needles-duotone.jpg"
+      },
+      "width": 300,
+      "height": 270,
+      "maxDisplayWidthCss": 200,
+      "alt": "Close-up of needles around the knee. (green-toned version)",
+      "notes": "",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "knee-points-duotone",
+      "folder": "duotone",
+      "files": {
+        "avif": "duotone/knee-points-duotone.avif",
+        "webp": "duotone/knee-points-duotone.webp",
+        "jpg": "duotone/knee-points-duotone.jpg"
+      },
+      "width": 310,
+      "height": 240,
+      "maxDisplayWidthCss": 206,
+      "alt": "Needles placed around the knees of a patient lying on a treatment bed. (green-toned version)",
+      "notes": "Low resolution (310x240): thumbnails only.",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "lower-leg-needles-duotone",
+      "folder": "duotone",
+      "files": {
+        "avif": "duotone/lower-leg-needles-duotone.avif",
+        "webp": "duotone/lower-leg-needles-duotone.webp",
+        "jpg": "duotone/lower-leg-needles-duotone.jpg"
+      },
+      "width": 570,
+      "height": 500,
+      "maxDisplayWidthCss": 380,
+      "alt": "Needles placed in two rows along the lower leg. (green-toned version)",
+      "notes": "",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "scalp-needles-close-duotone",
+      "folder": "duotone",
+      "files": {
+        "avif": "duotone/scalp-needles-close-duotone.avif",
+        "webp": "duotone/scalp-needles-close-duotone.webp",
+        "jpg": "duotone/scalp-needles-close-duotone.jpg"
+      },
+      "width": 400,
+      "height": 260,
+      "maxDisplayWidthCss": 266,
+      "alt": "Close-up of needles at the back of the head. (green-toned version)",
+      "notes": "",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "sterile-needle-pack-duotone",
+      "folder": "duotone",
+      "files": {
+        "avif": "duotone/sterile-needle-pack-duotone.avif",
+        "webp": "duotone/sterile-needle-pack-duotone.webp",
+        "jpg": "duotone/sterile-needle-pack-duotone.jpg"
+      },
+      "width": 300,
+      "height": 160,
+      "maxDisplayWidthCss": 200,
+      "alt": "An opened single-use sterile acupuncture needle pack beside the patient. (green-toned version)",
+      "notes": "Use small, next to hygiene copy.",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "treatment-abdomen-ring-duotone",
+      "folder": "duotone",
+      "files": {
+        "avif": "duotone/treatment-abdomen-ring-duotone.avif",
+        "webp": "duotone/treatment-abdomen-ring-duotone.webp",
+        "jpg": "duotone/treatment-abdomen-ring-duotone.jpg"
+      },
+      "width": 762,
+      "height": 880,
+      "maxDisplayWidthCss": 508,
+      "alt": "A ring of acupuncture needles radiating around a point on the abdomen. (green-toned version)",
+      "notes": "Signature image. The 'abdomen-ring' square crop is the most graphic photo in the set; use it in the hero or as the Digestive health image.",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "treatment-forehead-points-duotone",
+      "folder": "duotone",
+      "files": {
+        "avif": "duotone/treatment-forehead-points-duotone.avif",
+        "webp": "duotone/treatment-forehead-points-duotone.webp",
+        "jpg": "duotone/treatment-forehead-points-duotone.jpg"
+      },
+      "width": 750,
+      "height": 1000,
+      "maxDisplayWidthCss": 500,
+      "alt": "Fine acupuncture needles placed along the brow line of a patient resting on a treatment bed. Face blurred for privacy. (green-toned version)",
+      "notes": "Face blurred. Secondary use only (e.g. Head & face treatment page). Prefer the 'forehead-needles' crop.",
+      "privacy": "face blurred"
+    },
+    {
+      "id": "treatment-leg-sterile-needles-duotone",
+      "folder": "duotone",
+      "files": {
+        "avif": "duotone/treatment-leg-sterile-needles-duotone.avif",
+        "webp": "duotone/treatment-leg-sterile-needles-duotone.webp",
+        "jpg": "duotone/treatment-leg-sterile-needles-duotone.jpg"
+      },
+      "width": 490,
+      "height": 1000,
+      "maxDisplayWidthCss": 326,
+      "alt": "Acupuncture needles along a patient's lower leg and foot, with an opened single-use sterile needle pack on the bed. (green-toned version)",
+      "notes": "Good trust image: shows single-use needle packaging. Use on 'Your visit' safety section.",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "treatment-lower-leg-duotone",
+      "folder": "duotone",
+      "files": {
+        "avif": "duotone/treatment-lower-leg-duotone.avif",
+        "webp": "duotone/treatment-lower-leg-duotone.webp",
+        "jpg": "duotone/treatment-lower-leg-duotone.jpg"
+      },
+      "width": 762,
+      "height": 1016,
+      "maxDisplayWidthCss": 508,
+      "alt": "Rows of acupuncture needles placed along both sides of a patient's lower leg. (green-toned version)",
+      "notes": "Dramatic pattern; strong for Pain relief / Muscles & joints.",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "treatment-scalp-points-duotone",
+      "folder": "duotone",
+      "files": {
+        "avif": "duotone/treatment-scalp-points-duotone.avif",
+        "webp": "duotone/treatment-scalp-points-duotone.webp",
+        "jpg": "duotone/treatment-scalp-points-duotone.jpg"
+      },
+      "width": 602,
+      "height": 716,
+      "maxDisplayWidthCss": 401,
+      "alt": "Three acupuncture needles placed at the back of the head near the hairline. (green-toned version)",
+      "notes": "Strong, anonymous. Good for Stress & sleep / Neurological pages.",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "treatment-topdown-head-duotone",
+      "folder": "duotone",
+      "files": {
+        "avif": "duotone/treatment-topdown-head-duotone.avif",
+        "webp": "duotone/treatment-topdown-head-duotone.webp",
+        "jpg": "duotone/treatment-topdown-head-duotone.jpg"
+      },
+      "width": 762,
+      "height": 1016,
+      "maxDisplayWidthCss": 508,
+      "alt": "View from above a patient lying face-up, with needles placed along the forehead hairline. (green-toned version)",
+      "notes": "No identifiable face. Busy background; prefer 'yintang-forehead' crop.",
+      "privacy": "no identifiable face"
+    },
+    {
+      "id": "yintang-forehead-duotone",
+      "folder": "duotone",
+      "files": {
+        "avif": "duotone/yintang-forehead-duotone.avif",
+        "webp": "duotone/yintang-forehead-duotone.webp",
+        "jpg": "duotone/yintang-forehead-duotone.jpg"
+      },
+      "width": 400,
+      "height": 280,
+      "maxDisplayWidthCss": 266,
+      "alt": "Needles placed at the forehead and between the brows, seen from above. (green-toned version)",
+      "notes": "",
+      "privacy": "no identifiable face"
+    }
+  ]
+}

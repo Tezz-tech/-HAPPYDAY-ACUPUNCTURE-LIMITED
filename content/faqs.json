@@ -1,0 +1,33 @@
+{
+  "_readme": "FAQ content for /your-visit, plus a short subset on the home page (home: true). Answers marked confirm:true depend on clinic practice and must be checked with the client.",
+  "faqs": [
+    { "id": "hurt", "home": true, "q": "Does acupuncture hurt?",
+      "a": "Most people feel a quick tap or a small pinch as the needle goes in, then nothing, or a dull, heavy or warm feeling around the point. Acupuncture needles are solid and hair-fine, nothing like an injection needle. If anything feels uncomfortable, tell us and we will adjust it straight away." },
+    { "id": "sterile", "home": true, "confirm": true, "q": "Are the needles clean?",
+      "a": "Yes. We use sterile, single-use, disposable needles. Each pack is opened for you, and every needle goes into a sharps container after use. Needles are never reused." },
+    { "id": "length", "confirm": true, "q": "How long is a session?",
+      "a": "Plan for about 75 minutes on your first visit, which includes the full assessment. Follow-up treatments take about 50 minutes. The needles usually stay in for 20 to 30 minutes while you rest." },
+    { "id": "how-many", "home": true, "q": "How many sessions will I need?",
+      "a": "It depends on you and on how long you've had the problem. Some people notice a change within the first few sessions; long-standing conditions usually need a course of treatment. We agree a plan at your first visit and review it as we go, so you are never committed to more than makes sense." },
+    { "id": "wear", "q": "What should I wear and bring?",
+      "a": "Wear loose, comfortable clothes that roll up above the knee and elbow. Eat a light meal one to two hours before your visit; don't come hungry. Bring a list of any medicines you take and any recent test results or scans." },
+    { "id": "medical", "home": true, "q": "Will acupuncture replace my doctor or medication?",
+      "a": "No. Acupuncture is a complementary therapy and works alongside your medical care. Never stop or change prescribed medication without speaking to your doctor first." },
+    { "id": "tell-us", "q": "Is there anything I should tell you before treatment?",
+      "a": "Yes. Please tell us if you are or might be pregnant, take blood-thinning medication, have a bleeding disorder, a pacemaker, epilepsy, diabetes, or any condition affecting your skin or immune system. Most of these don't rule out acupuncture, but we may adapt your treatment." },
+    { "id": "tongue-pulse", "q": "What is a tongue and pulse assessment?",
+      "a": "They are two of the traditional ways a TCM practitioner builds a picture of your health. We look at the colour, coating and shape of your tongue, and feel the quality of your pulse at three positions on each wrist. It takes a few minutes and doesn't hurt." },
+    { "id": "after", "q": "How will I feel afterwards?",
+      "a": "Most people feel relaxed, and some feel a little sleepy. Drink water, take it easy for the rest of the day if you can, and avoid alcohol and heavy exercise straight after. Small bruises occasionally appear and fade within days." },
+    { "id": "pay", "confirm": true, "q": "How do I pay?",
+      "a": "When you book online you'll see our bank transfer details. Your appointment is confirmed once we receive the payment. You can also send your transfer receipt on WhatsApp." },
+    { "id": "cancel", "confirm": true, "q": "Can I reschedule or cancel?",
+      "a": "Yes. Use the link in your booking confirmation, or message us on WhatsApp, at least 24 hours before your appointment." },
+    { "id": "referral", "q": "Do I need a referral?",
+      "a": "No. You can book directly. If you have a diagnosis from your doctor, bring the details with you." },
+    { "id": "privacy", "q": "Is my information kept private?",
+      "a": "Yes. Your health information is used only for your care, is seen only by the clinic, and is never shared without your permission. Read our privacy policy for details." },
+    { "id": "emergency", "q": "What if it's an emergency?",
+      "a": "Acupuncture is not emergency care. If you think someone is having a stroke or heart attack, or has another medical emergency, go to the nearest hospital immediately." }
+  ]
+}

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Happyday Acupuncture">
+  <title>Happyday Acupuncture</title>
+  <line x1="20.19" y1="28.77" x2="12.55" y2="20.86" stroke="#B08D3E" stroke-width="1.1" stroke-linecap="round"/>
+  <circle cx="12.55" cy="20.86" r="1.55" fill="#B08D3E"/>
+  <line x1="25.63" y1="25.24" x2="21.51" y2="15.04" stroke="#B08D3E" stroke-width="1.1" stroke-linecap="round"/>
+  <circle cx="21.51" cy="15.04" r="1.55" fill="#B08D3E"/>
+  <line x1="32.00" y1="24.00" x2="32.00" y2="11.00" stroke="#B08D3E" stroke-width="1.1" stroke-linecap="round"/>
+  <circle cx="32.00" cy="11.00" r="1.55" fill="#B08D3E"/>
+  <line x1="38.37" y1="25.24" x2="42.49" y2="15.04" stroke="#B08D3E" stroke-width="1.1" stroke-linecap="round"/>
+  <circle cx="42.49" cy="15.04" r="1.55" fill="#B08D3E"/>
+  <line x1="43.81" y1="28.77" x2="51.45" y2="20.86" stroke="#B08D3E" stroke-width="1.1" stroke-linecap="round"/>
+  <circle cx="51.45" cy="20.86" r="1.55" fill="#B08D3E"/>
+  <circle cx="32" cy="41" r="14" fill="#FBF8F2" stroke="#1F4D36" stroke-width="1.4"/>
+  <path d="M32 27 A14 14 0 0 1 32 55 A7.0 7.0 0 0 1 32 41 A7.0 7.0 0 0 0 32 27Z" fill="#1F4D36"/>
+  <circle cx="32" cy="34.0" r="2.00" fill="#1F4D36"/>
+  <circle cx="32" cy="48.0" r="2.00" fill="#FBF8F2"/>
+</svg>

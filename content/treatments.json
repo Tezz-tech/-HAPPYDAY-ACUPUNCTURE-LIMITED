@@ -1,0 +1,142 @@
+{
+  "_readme": "The 10 treatment areas the client listed, plus extra conditions taken from the client's flyer. Copy follows the claims rules in docs/03 §0: say 'support' or 'may help'; never 'cure' or 'guaranteed'. Every page links to booking with ?concern=<slug> prefilled.",
+  "treatments": [
+    {
+      "slug": "pain-relief",
+      "order": 1,
+      "name": "Pain relief",
+      "acupoint": { "code": "BL40", "pinyin": "Wěizhōng" },
+      "short": "Back, neck, shoulder, knee and hip pain, arthritis and sciatica.",
+      "intro": "Pain that won't settle changes how you sleep, work and move. We look at where it sits, what makes it better or worse, and how the rest of your body is coping. Then we plan a course of acupuncture around you.",
+      "conditions": ["Back pain", "Chronic low back pain", "Neck pain", "Shoulder pain", "Knee pain", "Hip pain", "Arthritis", "Sciatica", "Lumbar spondylosis", "Lumbar spinal stenosis"],
+      "whatToExpect": "Needles are usually placed near the area of pain and at points further away on the arms and legs. Most people rest comfortably for 20 to 30 minutes while the needles are in.",
+      "bodyRegions": ["neck-shoulders", "back-hips", "knees-legs", "arms-hands"],
+      "photo": "lower-leg-needles",
+      "seo": { "title": "Acupuncture for Back, Neck & Joint Pain in Abuja", "description": "Personalised acupuncture for back pain, neck pain, sciatica, arthritis and knee pain at Happyday Acupuncture, Jabi, Abuja. Book a TCM assessment." }
+    },
+    {
+      "slug": "nerve-and-neurological",
+      "order": 2,
+      "name": "Nerve & neurological support",
+      "acupoint": { "code": "GV20", "pinyin": "Bǎihuì" },
+      "short": "Numbness, tingling, nerve pain, facial paralysis and stroke rehabilitation support.",
+      "intro": "Numbness, tingling and nerve pain can be frightening and hard to explain. Acupuncture can be used alongside your medical care to support recovery and comfort, including during rehabilitation after a stroke.",
+      "conditions": ["Numbness", "Tingling sensations", "Nerve-related pain", "Facial paralysis", "Stroke rehabilitation support"],
+      "safetyNote": "A stroke is a medical emergency. If someone's face droops, an arm becomes weak, or their speech becomes slurred, go to a hospital immediately. Acupuncture can support rehabilitation afterwards. It is not emergency care.",
+      "whatToExpect": "We will ask about your diagnosis, your scans and the treatment you are already having. Treatment plans for nerve conditions are usually reviewed every few sessions.",
+      "bodyRegions": ["head-face", "arms-hands", "knees-legs", "whole-body"],
+      "photo": "scalp-needles-close",
+      "seo": { "title": "Acupuncture for Numbness, Nerve Pain & Stroke Rehab Support | Abuja", "description": "Acupuncture support for numbness, tingling, nerve pain, facial paralysis and stroke rehabilitation in Jabi, Abuja." }
+    },
+    {
+      "slug": "fertility-support",
+      "order": 3,
+      "name": "Fertility support",
+      "acupoint": { "code": "SP6", "pinyin": "Sānyīnjiāo" },
+      "short": "Male and female fertility, erectile dysfunction, menstrual disorders and IVF support.",
+      "intro": "Trying to conceive can be a long and private road. Acupuncture can sit alongside the care you get from your doctor or fertility clinic, for women, for men, and for couples.",
+      "conditions": ["Female fertility support", "Male fertility support", "Erectile dysfunction", "Menstrual disorders", "Hormonal imbalance", "Complementary support during IVF"],
+      "whatToExpect": "We will ask about your cycle, history and any tests or treatment so far. If you are going through IVF, we plan sessions around your clinic's timetable.",
+      "bodyRegions": ["abdomen", "pelvis"],
+      "photo": "abdomen-ring",
+      "seo": { "title": "Fertility Acupuncture in Abuja: Male, Female & IVF Support", "description": "Discreet, personalised acupuncture for fertility support, menstrual disorders, erectile dysfunction and IVF support in Jabi, Abuja." }
+    },
+    {
+      "slug": "muscles-and-joints",
+      "order": 4,
+      "name": "Muscles & joints",
+      "acupoint": { "code": "GB34", "pinyin": "Yánglíngquán" },
+      "short": "Stiffness, joint pain, restricted movement and sports injuries.",
+      "intro": "Stiff muscles and sore joints get in the way of everyday life, whether you play sport or just want to get up from a chair more easily. Treatment focuses on easing tension and helping you move more freely.",
+      "conditions": ["Muscle stiffness", "Joint pain", "Restricted movement", "Sports-related injuries"],
+      "whatToExpect": "We check your range of movement before and after treatment, so that both of us can see what is changing.",
+      "bodyRegions": ["neck-shoulders", "arms-hands", "back-hips", "knees-legs"],
+      "photo": "knee-needles",
+      "seo": { "title": "Acupuncture for Joint Pain, Stiffness & Sports Injuries | Abuja", "description": "Acupuncture for muscle stiffness, joint pain, restricted movement and sports injuries at Happyday Acupuncture, Abuja." }
+    },
+    {
+      "slug": "digestive-health",
+      "order": 5,
+      "name": "Digestive health",
+      "acupoint": { "code": "ST36", "pinyin": "Zúsānlǐ" },
+      "short": "Constipation, diarrhoea, bloating and digestive discomfort.",
+      "intro": "In Traditional Chinese Medicine, digestion is central to energy and wellbeing. We look at your eating, sleep and stress patterns as well as your symptoms.",
+      "conditions": ["Constipation", "Diarrhoea", "Bloating", "Digestive discomfort"],
+      "safetyNote": "Blood in your stool, weight loss you can't explain, or severe abdominal pain need a doctor first.",
+      "whatToExpect": "Expect questions about diet, routine and stress. Treatment often includes points on the abdomen and lower legs.",
+      "bodyRegions": ["abdomen"],
+      "photo": "abdomen-ring",
+      "seo": { "title": "Acupuncture for Bloating, Constipation & Digestion | Abuja", "description": "TCM assessment and acupuncture for bloating, constipation, diarrhoea and digestive discomfort in Jabi, Abuja." }
+    },
+    {
+      "slug": "stress-and-sleep",
+      "order": 6,
+      "name": "Stress & sleep",
+      "acupoint": { "code": "HT7", "pinyin": "Shénmén" },
+      "short": "Stress, anxiety, insomnia, fatigue and deep relaxation.",
+      "intro": "Many patients are surprised by how calm they feel on the treatment bed. Acupuncture for stress and sleep focuses on settling the nervous system, so that you can rest.",
+      "conditions": ["Stress", "Anxiety", "Insomnia", "Fatigue", "Relaxation support"],
+      "whatToExpect": "A quiet session. Many people fall asleep during treatment, and that is fine.",
+      "bodyRegions": ["head-face", "whole-body"],
+      "photo": "scalp-needles-close",
+      "seo": { "title": "Acupuncture for Stress, Anxiety & Insomnia in Abuja", "description": "Calming acupuncture for stress, anxiety, insomnia and fatigue at Happyday Acupuncture, Jabi, Abuja." }
+    },
+    {
+      "slug": "eye-and-ent",
+      "order": 7,
+      "name": "Eye, ear, nose & throat",
+      "acupoint": { "code": "LI20", "pinyin": "Yíngxiāng" },
+      "short": "Dry eyes, eye discomfort, sinusitis and allergic rhinitis.",
+      "intro": "Blocked sinuses, sneezing seasons and tired, dry eyes wear you down. Acupuncture can be used to support comfort and relief alongside your usual care.",
+      "conditions": ["Dry eyes", "Eye discomfort", "Sinusitis", "Allergic rhinitis"],
+      "safetyNote": "Sudden changes in vision or eye pain need an eye doctor straight away.",
+      "whatToExpect": "Points are often placed around the face and on the hands. The needles used on the face are especially fine.",
+      "bodyRegions": ["head-face"],
+      "photo": "forehead-needles",
+      "seo": { "title": "Acupuncture for Sinusitis, Rhinitis & Dry Eyes | Abuja", "description": "Acupuncture support for sinusitis, allergic rhinitis, dry eyes and eye discomfort in Jabi, Abuja." }
+    },
+    {
+      "slug": "mens-health",
+      "order": 8,
+      "name": "Men's health",
+      "acupoint": { "code": "CV4", "pinyin": "Guānyuán" },
+      "short": "Prostate-related symptoms, erectile dysfunction and urinary difficulties.",
+      "intro": "These are conversations many men put off. We keep them private and practical, without judgement, and focus on how you can feel better.",
+      "conditions": ["Prostate-related symptoms", "Erectile dysfunction", "Urinary difficulties"],
+      "safetyNote": "Please see a doctor about urinary or prostate symptoms if you haven't already. We work alongside that care.",
+      "whatToExpect": "A private consultation first. You choose what you are comfortable discussing.",
+      "bodyRegions": ["pelvis", "abdomen"],
+      "photo": "yintang-forehead",
+      "seo": { "title": "Discreet Acupuncture for Men's Health in Abuja", "description": "Private acupuncture support for erectile dysfunction, prostate-related symptoms and urinary difficulties in Jabi, Abuja." }
+    },
+    {
+      "slug": "womens-health",
+      "order": 9,
+      "name": "Women's health",
+      "acupoint": { "code": "SP6", "pinyin": "Sānyīnjiāo" },
+      "short": "Menstrual pain and discomfort, cycle concerns and reproductive health support.",
+      "intro": "Painful or irregular periods are common, but you don't have to keep enduring them in silence. We look at your cycle as a whole and plan treatment around it.",
+      "conditions": ["Menstrual pain", "Menstrual discomfort", "Hormonal imbalance", "Reproductive health support"],
+      "whatToExpect": "We may suggest timing sessions with your cycle. Tell us if you are or might be pregnant, so that we can adapt your treatment.",
+      "bodyRegions": ["abdomen", "pelvis"],
+      "photo": "abdomen-ring",
+      "seo": { "title": "Acupuncture for Period Pain & Women's Health | Abuja", "description": "Personalised acupuncture for menstrual pain, cycle concerns and reproductive health support at Happyday Acupuncture, Abuja." }
+    },
+    {
+      "slug": "tcm-consultation",
+      "order": 10,
+      "name": "TCM consultation & assessment",
+      "acupoint": { "code": "PC6", "pinyin": "Nèiguān" },
+      "short": "Traditional Chinese Medicine diagnosis, tongue and pulse assessment, and a personal treatment plan.",
+      "intro": "Every treatment starts here. We listen to your story, look at your tongue, feel your pulse at both wrists, and put together a picture of what is going on. Then we tell you honestly what we think acupuncture can and can't do for you.",
+      "conditions": ["TCM diagnosis", "Tongue assessment", "Pulse assessment", "Individual treatment plan", "Acupuncture therapy"],
+      "whatToExpect": "Bring a list of your medicines and any recent test results or scans. You will leave with a clear plan, whether or not you go ahead.",
+      "bodyRegions": ["whole-body"],
+      "photo": "sterile-needle-pack",
+      "seo": { "title": "TCM Consultation, Tongue & Pulse Assessment in Abuja", "description": "Start with a full Traditional Chinese Medicine assessment, including tongue and pulse diagnosis and a personalised plan, at Happyday Acupuncture, Jabi, Abuja." }
+    }
+  ],
+  "_excludedFromFlyer": [
+    "'Supportive care for heart and liver health' is left out on purpose: it is a high-risk health claim. Add it only if the client insists, worded as general wellbeing support with a 'see your doctor' line."
+  ]
+}

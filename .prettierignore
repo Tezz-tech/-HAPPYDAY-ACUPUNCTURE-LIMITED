@@ -1,0 +1,14 @@
+# Client-owned source files: never reformat these.
+docs/
+content/
+assets/
+.claude/
+CLAUDE.md
+START_HERE.md
+KICKOFF_PROMPT.md
+TODO_CLIENT.md
+node_modules/
+build/
+dist/
+web/public/
+web/app/content/photos.generated.js

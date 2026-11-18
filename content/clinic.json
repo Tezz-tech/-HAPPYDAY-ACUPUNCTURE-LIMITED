@@ -1,0 +1,147 @@
+{
+  "_readme": "Single source of truth for business facts. Anything marked TODO_CLIENT must be confirmed before launch. Run `npm run check:todos` to list them. Operational values (bank details, hours, prices) are seeded into MongoDB from here and are then editable in /admin.",
+
+  "legalName": "Happyday Acupuncture Limited",
+  "brandName": "Happyday Acupuncture",
+  "descriptor": "Acupuncture & Traditional Chinese Medicine Clinic",
+  "tagline": "Heal naturally. Live better.",
+  "secondaryTagline": "Health · Balance · Wellness",
+  "foundedYear": 2024,
+  "cacRcNumber": "TODO_CLIENT: CAC RC number (shown in footer; builds trust)",
+
+  "founder": {
+    "name": "Balogun Happyday Ojoayo",
+    "role": "Founder & Acupuncturist",
+    "qualification": "Diploma in Acupuncture and Moxibustion (Dip. Acupuncture)",
+    "qualificationInstitution": "TODO_CLIENT: where the diploma was obtained, and the year",
+    "bio": "TODO_CLIENT: 80-120 words in the founder's own voice. Until supplied, use the placeholder bio in docs/03. Do not use gendered pronouns until confirmed.",
+    "portrait": "TODO_CLIENT: professional portrait needed (see docs/01 photo brief)"
+  },
+
+  "address": {
+    "building": "Oscar Apartments",
+    "street": "Plot 245, Dakibiyu District",
+    "area": "Jabi",
+    "city": "Abuja",
+    "state": "Federal Capital Territory",
+    "postalCode": "900108",
+    "country": "NG",
+    "display": "Oscar Apartments, Plot 245, Dakibiyu District, Jabi, Abuja",
+    "_confirm": "TODO_CLIENT: flyer says 'Oscar Apartments, Dakibiyu, Jabi'; form says 'Plot 245 Dakibiyiu District'. Confirm the exact wording, postal code, and send a Google Maps pin link.",
+    "geo": { "lat": null, "lng": null, "_todo": "TODO_CLIENT: coordinates from the Google Maps pin" },
+    "googleMapsUrl": "TODO_CLIENT",
+    "directionsHint": "TODO_CLIENT: a landmark sentence, e.g. 'Opposite ... / next to ...'"
+  },
+
+  "contact": {
+    "phoneE164": "+2348036404321",
+    "phoneDisplay": "0803 640 4321",
+    "whatsappE164": "2348036404321",
+    "whatsappDisplay": "0803 640 4321",
+    "email": "TODO_CLIENT: official email (ideally on the website domain, e.g. hello@happydayacupuncture.com)",
+    "socials": {
+      "instagram": "TODO_CLIENT",
+      "facebook": "TODO_CLIENT",
+      "tiktok": "TODO_CLIENT",
+      "x": "TODO_CLIENT"
+    }
+  },
+
+  "hours": {
+    "_todo": "TODO_CLIENT: real opening hours. Placeholder below is ONLY for development seeds; the site shows 'Hours confirmed on WhatsApp' while this flag is true.",
+    "isPlaceholder": true,
+    "timezone": "Africa/Lagos",
+    "weekly": {
+      "mon": [["09:00", "17:00"]],
+      "tue": [["09:00", "17:00"]],
+      "wed": [["09:00", "17:00"]],
+      "thu": [["09:00", "17:00"]],
+      "fri": [["09:00", "17:00"]],
+      "sat": [["10:00", "15:00"]],
+      "sun": []
+    }
+  },
+
+  "payments": {
+    "currency": "NGN",
+    "mode": "transfer_deposit",
+    "_modeOptions": "pay_at_clinic | transfer_deposit | transfer_full. TODO_CLIENT: confirm which.",
+    "bankTransfer": {
+      "bankName": "First Bank of Nigeria",
+      "accountName": "Balogun Happyday Ojoayo",
+      "accountNumber": "3235012468",
+      "_note": "Personal account name, not the company. Recommend a corporate account in the name 'Happyday Acupuncture Limited'. Patients trust a matching name more."
+    },
+    "alsoAcceptedAtClinic": "TODO_CLIENT: cash / POS / transfer at clinic?",
+    "unpaidHoldMinutes": 180
+  },
+
+  "appointmentTypes": [
+    {
+      "slug": "first-consultation",
+      "name": "First consultation & treatment",
+      "summary": "Full TCM assessment, including tongue and pulse, then your first acupuncture treatment and a written plan.",
+      "durationMinutes": 75,
+      "priceNaira": null,
+      "depositNaira": null,
+      "isFirstVisit": true,
+      "_todo": "TODO_CLIENT: price, deposit, duration"
+    },
+    {
+      "slug": "follow-up",
+      "name": "Follow-up treatment",
+      "summary": "For returning patients continuing a treatment plan.",
+      "durationMinutes": 50,
+      "priceNaira": null,
+      "depositNaira": null,
+      "isFirstVisit": false,
+      "_todo": "TODO_CLIENT: price, deposit, duration"
+    },
+    {
+      "slug": "consultation-only",
+      "name": "Consultation & assessment only",
+      "summary": "A TCM assessment and honest advice on whether acupuncture is right for you, without treatment on the day.",
+      "durationMinutes": 30,
+      "priceNaira": null,
+      "depositNaira": null,
+      "isFirstVisit": true,
+      "_todo": "TODO_CLIENT: confirm this type exists; price, duration"
+    }
+  ],
+
+  "scheduling": {
+    "slotIntervalMinutes": 15,
+    "bufferMinutes": 10,
+    "minNoticeHours": 3,
+    "maxAdvanceDays": 60,
+    "capacityPerSlot": 1,
+    "_capacityTodo": "TODO_CLIENT: how many patients can be treated at the same time? (photos show several beds)",
+    "cancellationNoticeHours": 24
+  },
+
+  "company": {
+    "vision": "To become a trusted and recognised centre for acupuncture and Traditional Chinese Medicine, promoting holistic wellness, quality patient care and improved quality of life.",
+    "mission": "To provide accessible, professional and patient-centred acupuncture and Traditional Chinese Medicine services.",
+    "missionPoints": [
+      "Personalised consultations and treatment assessments.",
+      "Awareness of traditional and complementary healthcare approaches.",
+      "High standards of professionalism, safety and patient care.",
+      "A comfortable, welcoming and respectful environment for patients.",
+      "Preventive healthcare and healthy living.",
+      "Continuous improvement of our services and patient experience."
+    ],
+    "values": [
+      { "name": "Professionalism", "line": "High standards in every treatment, every time." },
+      { "name": "Compassion", "line": "Kindness, dignity and respect for every patient." },
+      { "name": "Integrity", "line": "Honest advice, including when acupuncture isn't the answer." },
+      { "name": "Patient-centred care", "line": "Your treatment is built around you, not a template." },
+      { "name": "Wellness", "line": "Healthy living, not just symptom relief." },
+      { "name": "Excellence", "line": "Always learning, always improving." }
+    ]
+  },
+
+  "servicesBeyondAcupuncture": {
+    "_todo": "TODO_CLIENT: the practitioner holds a Diploma in Acupuncture AND Moxibustion. Confirm which of these are offered so they can be listed: moxibustion, cupping, electro-acupuncture, herbal medicine, ear seeds/auricular. Do not list any until confirmed.",
+    "confirmed": []
+  }
+}

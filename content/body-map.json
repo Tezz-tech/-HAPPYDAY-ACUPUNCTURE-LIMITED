@@ -1,0 +1,32 @@
+{
+  "_readme": "Data for the 'Where does it hurt?' interactive body map (docs/02 §5.3). The region ids match the <g id> hit-areas in the BodyMap SVG. Front and back views share the ids; back-hips is mainly on the back view.",
+  "prompt": "Where does it hurt?",
+  "subprompt": "Tap the area that's bothering you. We'll show the conditions we see most often there.",
+  "regions": [
+    { "id": "head-face", "label": "Head & face", "views": ["front", "back"],
+      "conditions": ["Facial paralysis", "Sinusitis", "Allergic rhinitis", "Dry eyes", "Eye discomfort", "Insomnia", "Stress & anxiety"],
+      "treatments": ["eye-and-ent", "nerve-and-neurological", "stress-and-sleep"] },
+    { "id": "neck-shoulders", "label": "Neck & shoulders", "views": ["front", "back"],
+      "conditions": ["Neck pain", "Shoulder pain", "Muscle stiffness", "Restricted movement"],
+      "treatments": ["pain-relief", "muscles-and-joints"] },
+    { "id": "arms-hands", "label": "Arms & hands", "views": ["front", "back"],
+      "conditions": ["Numbness", "Tingling", "Joint pain", "Arthritis", "Nerve-related pain"],
+      "treatments": ["nerve-and-neurological", "muscles-and-joints", "pain-relief"] },
+    { "id": "back-hips", "label": "Back & hips", "views": ["back"],
+      "conditions": ["Low back pain", "Lumbar spondylosis", "Lumbar spinal stenosis", "Sciatica", "Hip pain"],
+      "treatments": ["pain-relief", "muscles-and-joints"] },
+    { "id": "abdomen", "label": "Stomach & digestion", "views": ["front"],
+      "conditions": ["Bloating", "Constipation", "Diarrhoea", "Digestive discomfort", "Menstrual pain"],
+      "treatments": ["digestive-health", "womens-health"] },
+    { "id": "pelvis", "label": "Pelvis & reproductive health", "views": ["front"],
+      "conditions": ["Fertility (men & women)", "IVF support", "Erectile dysfunction", "Prostate-related symptoms", "Urinary difficulties", "Menstrual disorders"],
+      "treatments": ["fertility-support", "mens-health", "womens-health"] },
+    { "id": "knees-legs", "label": "Knees, legs & feet", "views": ["front", "back"],
+      "conditions": ["Knee pain", "Arthritis", "Sciatica (leg pain)", "Numbness & tingling", "Sports injuries"],
+      "treatments": ["pain-relief", "muscles-and-joints", "nerve-and-neurological"] },
+    { "id": "whole-body", "label": "Whole body & mind", "views": ["front", "back"], "isToggle": true,
+      "conditions": ["Stress", "Fatigue", "Insomnia", "Hormonal imbalance", "Stroke rehabilitation support", "General wellbeing"],
+      "treatments": ["stress-and-sleep", "nerve-and-neurological", "tcm-consultation"] }
+  ],
+  "notSure": { "label": "Not sure? Start with an assessment", "treatment": "tcm-consultation" }
+}

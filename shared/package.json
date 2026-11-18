@@ -1,0 +1,18 @@
+{
+  "name": "@happyday/shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./slots": "./slots.js",
+    "./whatsapp": "./whatsapp.js",
+    "./phone": "./phone.js",
+    "./money": "./money.js",
+    "./time": "./time.js",
+    "./constants": "./constants.js",
+    "./schemas": "./schemas/index.js"
+  },
+  "dependencies": {
+    "zod": "^4.6.7"
+  }
+}
