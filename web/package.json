@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node ../scripts/sync-assets.js && react-router dev",
-    "build": "node ../scripts/sync-assets.js && react-router build",
+    "build": "react-router build && node scripts/post-build.js",
     "typegen": "react-router typegen",
     "fonts:subset": "node scripts/subset-fonts.js"
   },
