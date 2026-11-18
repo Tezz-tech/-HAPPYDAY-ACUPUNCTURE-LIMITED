@@ -38,6 +38,9 @@ const validBody = (overrides = {}) => ({
 
 beforeAll(async () => {
   replset = await MongoMemoryReplSet.create({ replSet: { count: 1, storageEngine: 'wiredTiger' } });
+  // Same settings as production (db.js), so tests catch filter-sanitising problems too.
+  mongoose.set('sanitizeFilter', true);
+  mongoose.set('strictQuery', true);
   await mongoose.connect(replset.getUri());
   env = loadEnv({ NODE_ENV: 'test' });
   await Promise.all([Booking, SeatLock, BookingEvent, AppointmentType, Availability, Settings].map((m) => m.syncIndexes()));

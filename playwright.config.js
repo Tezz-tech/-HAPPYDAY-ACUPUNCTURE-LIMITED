@@ -1,6 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const PORT = 5173;
+// Dedicated ports for the test run, so stray dev servers on the defaults cannot leak into it.
+const PORT = 5273;
+const API_PORT = 4200;
 
 export default defineConfig({
   testDir: 'e2e',
@@ -18,10 +20,20 @@ export default defineConfig({
     { name: 'mobile-390', use: { ...devices['Pixel 5'], viewport: { width: 390, height: 844 } } },
     { name: 'desktop-1440', use: { viewport: { width: 1440, height: 900 } } },
   ],
-  webServer: {
-    command: 'npm run dev -w web',
-    url: `http://localhost:${PORT}`,
-    reuseExistingServer: true,
-    timeout: 120_000,
-  },
+  webServer: [
+    {
+      command: 'npm run dev -w api',
+      url: `http://localhost:${API_PORT}/api/v1/health`,
+      reuseExistingServer: false,
+      timeout: 180_000,
+      env: { NODE_ENV: 'development', PORT: String(API_PORT) },
+    },
+    {
+      command: 'npm run dev -w web',
+      url: `http://localhost:${PORT}`,
+      reuseExistingServer: false,
+      timeout: 120_000,
+      env: { WEB_PORT: String(PORT), API_ORIGIN: `http://localhost:${API_PORT}` },
+    },
+  ],
 });

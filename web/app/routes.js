@@ -17,5 +17,8 @@ export default [
     route('404', 'routes/not-found.jsx'),
     route('*', 'routes/not-found.jsx', { id: 'catch-all' }),
   ]),
+  route('book', 'routes/book.jsx'),
+  route('book/confirmed/:ref', 'routes/book-confirmed.jsx'),
+  route('booking/:ref', 'routes/booking.jsx'),
   route('styleguide', 'routes/styleguide.jsx'),
 ];

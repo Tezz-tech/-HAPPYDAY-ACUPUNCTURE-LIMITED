@@ -12,7 +12,7 @@ export function startJobs({ logger }) {
       const expired = await expireHolds();
       if (expired > 0) logger.info({ expired }, 'expired unpaid holds');
     } catch (err) {
-      logger.error({ err: { message: err.message } }, 'expireHolds failed');
+      logger.error({ err: { name: err.name, code: err.code } }, 'expireHolds failed');
     }
   });
   return { stop: () => task.stop() };

@@ -5,7 +5,6 @@ import { bucketsFor, checkBookable, lockKey, computeSlots, localDateKey } from '
 import { HOLDING_STATUSES } from '@happyday/shared/constants';
 
 const MIN = 60_000;
-const BUCKET_MS = 15 * MIN;
 // Crockford base32: no I, L, O or U, and no 0 or 1 confusion.
 const REF_ALPHABET = '23456789ABCDEFGHJKMNPQRSTVWXYZ';
 
@@ -87,11 +86,15 @@ export async function loadSlotConfig() {
  * @returns {Promise<Set<string>>}
  */
 export async function heldLocks(from, to, now = Date.now()) {
-  const locks = await SeatLock.find({ holds: true, bucket: { $gte: from, $lt: to } }, { bucket: 1, seat: 1, bookingId: 1 }).lean();
+  // Operator filters are marked trusted, because sanitizeFilter (db.js) strips operators from filters by default.
+  const locks = await SeatLock.find(
+    { holds: true, bucket: mongoose.trusted({ $gte: from, $lt: to }) },
+    { bucket: 1, seat: 1, bookingId: 1 },
+  ).lean();
   if (locks.length === 0) return new Set();
   const bookingIds = [...new Set(locks.map((l) => String(l.bookingId)))];
   const stale = await Booking.find(
-    { _id: { $in: bookingIds }, status: 'awaiting_payment', holdExpiresAt: { $lte: new Date(now) } },
+    { _id: mongoose.trusted({ $in: bookingIds }), status: 'awaiting_payment', holdExpiresAt: mongoose.trusted({ $lte: new Date(now) }) },
     { _id: 1 },
   ).lean();
   const staleIds = new Set(stale.map((b) => String(b._id)));
@@ -160,7 +163,7 @@ export async function createBooking(input) {
   const status = payAtClinic ? 'confirmed' : 'awaiting_payment';
 
   const session = await mongoose.startSession();
-  let booked = null;
+  let booked;
   try {
     booked = await session.withTransaction(async () => {
       // Inside the transaction each seat is checked before it is written. A duplicate-key error inside a
@@ -169,7 +172,11 @@ export async function createBooking(input) {
       // (bucket, seat) stays as the final guard (docs/04).
       let seat = null;
       for (let s = 1; s <= cfg.capacityPerSlot && seat === null; s += 1) {
-        const busy = await SeatLock.exists({ holds: true, seat: s, bucket: { $in: bucketTimes.map((b) => new Date(b)) } }).session(session);
+        const busy = await SeatLock.exists({
+          holds: true,
+          seat: s,
+          bucket: mongoose.trusted({ $in: bucketTimes.map((b) => new Date(b)) }),
+        }).session(session);
         if (busy) continue;
         const docs = bucketTimes.map((b) => ({ bookingId, bucket: new Date(b), seat: s, holds: true }));
         await SeatLock.insertMany(docs, { session, ordered: true });
@@ -274,7 +281,10 @@ export async function transition(bookingId, to, opts) {
  * @returns {Promise<number>} how many were expired
  */
 export async function expireHolds(now = Date.now()) {
-  const due = await Booking.find({ status: 'awaiting_payment', holdExpiresAt: { $lte: new Date(now) } }, { _id: 1 }).lean();
+  const due = await Booking.find(
+    { status: 'awaiting_payment', holdExpiresAt: mongoose.trusted({ $lte: new Date(now) }) },
+    { _id: 1 },
+  ).lean();
   let count = 0;
   for (const b of due) {
     try {

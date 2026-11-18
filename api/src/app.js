@@ -55,7 +55,7 @@ export function createApp({ env, logger = createLogger({ level: env.LOG_LEVEL })
       return res.status(err.status).json({ error: { code: err.code, message: err.message } });
     }
     const status = err.status ?? err.statusCode ?? 500;
-    if (status >= 500) req.log?.error({ err: { message: err.message, name: err.name } }, 'request failed');
+    if (status >= 500) req.log?.error({ err: { name: err.name, code: err.code } }, 'request failed');
     res.status(status >= 400 && status < 600 ? status : 500).json({
       error: {
         code: status >= 500 ? 'INTERNAL' : err.code ?? 'VALIDATION',
