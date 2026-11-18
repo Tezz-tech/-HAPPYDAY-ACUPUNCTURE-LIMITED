@@ -1,5 +1,6 @@
 import { Button } from '../components/ui/Button.jsx';
 import { SectionHead } from '../components/layout/SectionHead.jsx';
+import { Hero } from '../components/features/Hero.jsx';
 import { Meridian } from '../components/layout/Meridian.jsx';
 import { BodyMapSection } from '../components/features/BodyMapSection.jsx';
 import { TreatmentIndex } from '../components/features/TreatmentIndex.jsx';
@@ -51,37 +52,10 @@ export default function Home() {
   return (
     <main className="page page-home">
       <JsonLd data={medicalClinic} />
+      <Meridian />
 
       {/* §1 Hero */}
-      <section className="hero" aria-labelledby="hero-title">
-        <Meridian />
-        <div className="hero-copy">
-          <p className="label hero-label">Acupuncture &amp; Traditional Chinese Medicine · Jabi, Abuja</p>
-          <h1 id="hero-title" className="type-display-xl hero-title">
-            Heal naturally.
-            <br />
-            Live <em>better.</em>
-          </h1>
-          <p className="type-lead hero-lead">
-            Personalised acupuncture for pain, nerve problems, fertility, sleep and more. Every plan starts with a proper
-            Traditional Chinese Medicine assessment of you, not just your symptoms.
-          </p>
-          <div className="hero-actions">
-            <Button to="/book" variant="primary" cta>
-              Book a consultation
-            </Button>
-            <Button href={WA_LINKS.general} variant="whatsapp" icon="whatsapp">
-              Chat on WhatsApp
-            </Button>
-          </div>
-          <ul className="hero-facts">
-            <li>Diploma in Acupuncture &amp; Moxibustion</li>
-            <li>Sterile, single-use needles</li>
-            <li>Bank transfer or WhatsApp booking</li>
-          </ul>
-        </div>
-        <div className="hero-field" aria-hidden="true" />
-      </section>
+      <Hero />
 
       {/* §2 Where does it hurt? */}
       <section className="section" aria-labelledby="body-map-title">

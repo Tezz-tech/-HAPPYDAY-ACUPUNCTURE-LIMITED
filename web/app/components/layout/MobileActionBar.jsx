@@ -12,7 +12,7 @@ export function MobileActionBar() {
   return (
     <div
       className={`mobile-action-bar ${pastHero ? 'is-visible' : ''}`.trim()}
-      aria-hidden={pastHero ? undefined : 'true'}
+      inert={!pastHero}
     >
       <Button to="/book" variant="primary" cta className="mobile-action-book">
         Book a visit

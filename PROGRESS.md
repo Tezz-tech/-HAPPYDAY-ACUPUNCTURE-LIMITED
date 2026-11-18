@@ -7,9 +7,9 @@ Living log for the build. `/next-phase` reads this to find where to pick up. Upd
 | Phase | Status | Commit |
 |---|---|---|
 | 0. Scaffold and tooling | done | phase-0 |
-| 1. Design system | next | |
-| 2. Layout and content pages | | |
-| 3. Signature interactions and motion | | |
+| 1. Design system | done | ebfe74d |
+| 2. Layout and content pages | done | f991d0f |
+| 3. Signature interactions and motion | done (see gaps) | this commit |
 | 4. API core and slot engine | | |
 | 5. Booking flow (web) | | |
 | 6. Admin dashboard | | |
@@ -34,9 +34,32 @@ Living log for the build. `/next-phase` reads this to find where to pick up. Upd
 5. **Node version.** `.nvmrc` is 24 (LTS). The machine has Node 26.5, so the build runs there too.
 6. **Email previews** go to `api/emails-preview/`, which is gitignored, not `/tmp`.
 
+## Phase 2 and 3: what was built
+
+- Site chrome: header with scroll hide and show, mobile menu sheet, footer, mobile action bar, meridian line.
+- All marketing routes from docs/03, real copy, prerendered (19 pages), with canonical, OG and JSON-LD.
+- Post-build: sitemap.xml, robots.txt, 404.html, and _headers with a strict CSP (inline script hashes).
+- Motion: hero intro (SplitText), needle field canvas, meridian (DrawSVG), body map with needle drop, needle scale with magnify, treatment preview on fine pointers, pinned visit steps, duotone-to-colour photo strip, magnetic CTA, view transitions, Lenis on fine pointers.
+- Home first-load JS: 142.6 KB gzip (budget 160). GSAP and Lenis load after first paint.
+- e2e: 20 of 20 pass (home and styleguide: axe WCAG 2.2 AA, no console errors, 360 px no overflow, keyboard list and sheet).
+
+## Decisions (Phase 2 and 3)
+
+1. GSAP loads lazily after idle, not via a static import. This keeps the home first-load JS under the 160 KB budget. Components use a gsap context inside the effect, not useGSAP, because the module is loaded dynamically. Cleanup still reverts everything.
+2. motion/react was removed. The accordion and needle scale use CSS, so the bundle does not carry it.
+3. The body map figure is hand-built simple geometry. It is functional but needs a proper line-art pass by a designer.
+4. Lighthouse and the full design-qa pass are not run yet.
+
+## Known gaps before launch
+
+- Body map figure: needs a proper illustration (see decision 3).
+- Reduced-motion screenshots and 768 px review not yet inspected.
+- Hero headline: check the three-line wrap at 1440 px after the column widening.
+- CONFIRM items in the copy (docs/03 and content flagged confirm) still need the client.
+
 ## Next
 
-- Phase 1: design system. `Button`, `Link`, inputs, `Chip`, `Accordion`, `Sheet`, `Toast`, `Picture`, `Logo`, `Mark`, `Seal`, `AcupointLabel`, `Rule`, the `/styleguide` dev route, and axe checks on the styleguide.
+- Phase 4: API core and slot engine (seat locks, concurrency test).
 
 ## Open client items
 

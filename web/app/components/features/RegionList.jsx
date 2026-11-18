@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import { bodyRegions, bodyMapCopy } from '../../content/index.js';
+import { STROKE_NOTE } from '../../lib/site.js';
 
 /**
  * The accessible equivalent of the body map (docs/02 §5.4). Every region is a button with
@@ -38,6 +39,7 @@ export function RegionList({ selected, onSelect, regions = bodyRegions }) {
                 <li key={c}>{c}</li>
               ))}
             </ul>
+            {current.id === "whole-body" ? <p className="type-small region-safety">{STROKE_NOTE}</p> : null}
             <p className="region-links">
               {current.treatments.map((slug) => (
                 <Link key={slug} to={`/treatments/${slug}`} className="link-underline">

@@ -41,7 +41,7 @@ export function Button({
 
   if (to) {
     return (
-      <Link to={to} className={classes} {...rest}>
+      <Link to={to} className={classes} viewTransition {...rest}>
         {content}
       </Link>
     );

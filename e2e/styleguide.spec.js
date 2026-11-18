@@ -5,6 +5,7 @@ test.describe('styleguide', () => {
   test('has no axe violations (WCAG 2.2 AA)', async ({ page }) => {
     await page.goto('/styleguide');
     await page.waitForLoadState('networkidle');
+    await expect(page).toHaveTitle(/Styleguide/);
     const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
     const serious = results.violations.filter((v) => ['serious', 'critical'].includes(v.impact));
     expect(

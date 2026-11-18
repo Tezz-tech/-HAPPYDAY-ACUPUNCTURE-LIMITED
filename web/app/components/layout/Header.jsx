@@ -34,7 +34,7 @@ export function Header() {
           <ul className="site-nav-list">
             {NAV.map((item) => (
               <li key={item.to}>
-                <NavLink to={item.to} className="site-nav-link link-underline">
+                <NavLink to={item.to} className="site-nav-link link-underline" viewTransition>
                   {item.label}
                 </NavLink>
               </li>

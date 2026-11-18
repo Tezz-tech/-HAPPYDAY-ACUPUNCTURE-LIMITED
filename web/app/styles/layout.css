@@ -330,7 +330,7 @@
   z-index: 1;
   display: grid;
   gap: 24px;
-  max-width: 720px;
+  max-width: 980px;
 }
 .hero-title em,
 .page-hero em,

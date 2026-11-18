@@ -2,6 +2,7 @@
 @import './fonts.css';
 @import './components.css';
 @import './layout.css';
+@import './motion.css';
 
 /*
  * Design tokens from docs/02. The default Tailwind palette and type scale are

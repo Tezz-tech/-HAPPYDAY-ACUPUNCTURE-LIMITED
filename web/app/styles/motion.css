@@ -1,0 +1,362 @@
+/* ---------- Phase 3: motion (docs/02 §6) ---------- */
+
+/* Needle field canvas, sized by its frame and faded in with the hero intro. */
+.needle-field {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.hero-field {
+  pointer-events: none;
+}
+@media (min-width: 768px) {
+  .hero-field {
+    width: 58%;
+    inset: 0 0 0 auto;
+    pointer-events: none;
+  }
+}
+
+/* Meridian: a full-height SVG line in the gutter, drawn by DrawSVG. */
+.meridian {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 14px;
+  width: 20px;
+  color: var(--color-gold-400);
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 0;
+}
+.meridian-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+@media (min-width: 1024px) {
+  .meridian {
+    left: calc(var(--gutter) / 2 - 10px);
+  }
+}
+
+/* Section point: a ring plays once when the section arrives (docs/02 §5.2). */
+.section-point::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border: 1px solid var(--color-gold-400);
+  border-radius: 999px;
+  opacity: 0;
+}
+.section-point.is-on::after {
+  animation: point-ring 600ms var(--ease-out-expo) both;
+}
+@keyframes point-ring {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* Visit steps: pinned on desktop, timeline on phones. */
+.visit-pin {
+  position: relative;
+  overflow: hidden;
+}
+.visit-pin.is-compact {
+  position: static;
+}
+@media (min-width: 1024px) {
+  .visit-steps:not(.is-compact) {
+    display: flex;
+    gap: 72px;
+    width: max-content;
+    padding: 36px 0 0;
+  }
+  .visit-steps:not(.is-compact) .visit-step {
+    flex: 0 0 min(420px, 30vw);
+  }
+}
+
+/* Body map */
+.body-map {
+  display: grid;
+  gap: 16px;
+  justify-items: center;
+}
+.body-map-section {
+  display: grid;
+  gap: 40px;
+}
+@media (min-width: 1024px) {
+  .body-map-section {
+    grid-template-columns: 5fr 7fr;
+    align-items: start;
+    gap: 56px;
+  }
+}
+.body-map-figure {
+  width: min(340px, 100%);
+  transition: transform 190ms var(--ease-in-out-quart);
+  transform-origin: center;
+}
+.body-map-figure.is-flipping {
+  transform: scaleX(0.001);
+}
+.body-map-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.body-outline {
+  fill: none;
+  stroke: var(--color-ink);
+  stroke-width: 1.25;
+  stroke-linejoin: round;
+}
+.body-region {
+  fill: transparent;
+  stroke: transparent;
+  cursor: pointer;
+  transition:
+    fill var(--duration-t1) var(--ease-out-expo),
+    stroke var(--duration-t1) var(--ease-out-expo);
+}
+.body-region.is-hit {
+  fill: transparent;
+}
+.body-region.is-hover:not(.is-hit),
+.body-region.is-selected:not(.is-hit) {
+  fill: rgb(44 110 48 / 0.1);
+  stroke: var(--color-forest-500);
+  stroke-width: 1.25;
+}
+.body-region.is-hit.is-hover {
+  stroke: var(--color-forest-500);
+  stroke-dasharray: 3 4;
+  stroke-width: 1;
+}
+.needle-drop line {
+  stroke: var(--color-gold-400);
+  stroke-width: 1;
+  transform-box: fill-box;
+  transform-origin: top;
+  animation: needle-drop 520ms var(--ease-out-expo) both;
+}
+.needle-drop circle {
+  fill: var(--color-gold-400);
+}
+.needle-drop .needle-ripple {
+  fill: none;
+  stroke: var(--color-gold-400);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ripple 900ms var(--ease-out-expo) 420ms both;
+}
+@keyframes needle-drop {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+@keyframes ripple {
+  from {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(5);
+    opacity: 0;
+  }
+}
+.body-map-actions {
+  display: flex;
+  justify-content: center;
+}
+.region-safety {
+  margin: 0 0 16px;
+  padding-left: 14px;
+  border-left: 1px solid var(--color-cinnabar);
+  color: var(--color-ink);
+}
+.region-conditions li {
+  animation: stagger-in 380ms var(--ease-out-expo) both;
+}
+.region-conditions li:nth-child(2) {
+  animation-delay: 40ms;
+}
+.region-conditions li:nth-child(3) {
+  animation-delay: 80ms;
+}
+.region-conditions li:nth-child(4) {
+  animation-delay: 120ms;
+}
+.region-conditions li:nth-child(5) {
+  animation-delay: 160ms;
+}
+.region-conditions li:nth-child(6) {
+  animation-delay: 200ms;
+}
+@keyframes stagger-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Needle scale: bars grow in turn; magnified bars are thick sections. */
+.needle-bar {
+  transition: width 900ms var(--ease-out-expo);
+}
+.needle-scale-tools {
+  display: flex;
+  justify-content: flex-end;
+}
+.needle-scale-tools .btn {
+  color: var(--color-paper);
+}
+
+/* Treatment index preview: fine pointers only. */
+.treatment-index-wrap {
+  position: relative;
+}
+.treatment-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  pointer-events: none;
+  z-index: 40;
+  opacity: 0;
+  transition: opacity var(--duration-t2) var(--ease-out-expo);
+  will-change: transform;
+}
+.treatment-preview.is-on {
+  opacity: 1;
+}
+.treatment-preview img {
+  display: block;
+  width: 220px;
+  height: auto;
+  box-shadow: var(--shadow-float);
+}
+.treatment-preview img[hidden] {
+  display: none;
+}
+@media (pointer: coarse) {
+  .treatment-preview {
+    display: none;
+  }
+}
+
+/* Duotone to colour photo frames (PhotoStrip). */
+.duo-frame {
+  position: relative;
+}
+.duo-layer {
+  position: absolute;
+  inset: 0;
+  transition: opacity 700ms var(--ease-out-expo);
+}
+.duo-layer .pic {
+  height: 100%;
+}
+.duo-layer .pic-frame,
+.duo-layer picture {
+  height: 100%;
+}
+.duo-base {
+  position: relative;
+}
+.duo-colour {
+  position: absolute;
+  inset: 0;
+}
+
+/* Magnetic CTA wrapper */
+.magnetic {
+  display: inline-flex;
+  transition: transform 300ms var(--ease-out-expo);
+}
+
+/* View transitions: the old page fades and lifts 12 px, the new page fades in (docs/02 §6). */
+@keyframes vt-out {
+  to {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+}
+@keyframes vt-in {
+  from {
+    opacity: 0;
+  }
+}
+::view-transition-old(root) {
+  animation: 260ms var(--ease-out-expo) both vt-out;
+}
+::view-transition-new(root) {
+  animation: 420ms var(--ease-out-expo) both vt-in;
+}
+.site-header {
+  view-transition-name: site-header;
+}
+.mobile-action-bar {
+  view-transition-name: action-bar;
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: 200ms linear both vt-in;
+  }
+  .needle-drop line,
+  .needle-drop .needle-ripple,
+  .region-conditions li,
+  .section-point.is-on::after {
+    animation: none;
+  }
+  .section-point.is-on::after {
+    opacity: 0;
+  }
+  .duo-layer {
+    transition: opacity 200ms ease-out;
+  }
+}
+
+/* Accordion: height animates via grid rows, so no measuring is needed. */
+.accordion-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 420ms var(--ease-out-expo),
+    opacity 260ms var(--ease-out-expo);
+}
+.accordion-panel[data-open="true"] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.accordion-panel-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+@media (prefers-reduced-motion: reduce) {
+  .accordion-panel {
+    transition: opacity 200ms ease-out;
+  }
+}
