@@ -13,5 +13,6 @@
     }
   ],
   "buildCommand": "true",
-  "framework": null
+  "framework": null,
+  "installCommand": "npm ci --omit=dev"
 }
