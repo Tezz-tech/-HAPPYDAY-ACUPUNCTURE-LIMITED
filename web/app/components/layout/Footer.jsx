@@ -28,6 +28,9 @@ export function Footer() {
           <p>
             <a href={WA_LINKS.general}>WhatsApp</a>
           </p>
+          <p>
+            <a href={`mailto:${clinic.contact.email}`}>{clinic.contact.email}</a>
+          </p>
         </div>
         <nav aria-label="Footer" className="footer-col">
           <p className="label footer-label">Explore</p>
