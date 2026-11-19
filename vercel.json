@@ -1,0 +1,16 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.js"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/v1/internal/expire-holds",
+      "schedule": "0 3 * * *"
+    }
+  ],
+  "buildCommand": "true"
+}

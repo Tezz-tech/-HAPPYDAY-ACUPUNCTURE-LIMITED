@@ -1,3 +1,4 @@
+import { pathToFileURL } from 'node:url';
 // Seeds the database from /content (docs/05). Idempotent: running it twice changes nothing new.
 // Usage: npm run seed -w api  (set MONGODB_URI, or it uses the in-memory dev database)
 import clinic from '../../content/clinic.json' with { type: 'json' };
@@ -97,7 +98,9 @@ async function main() {
   await db.stop();
 }
 
-if (import.meta.url === `file://${process.argv[1].replace(/\\/g, '/')}` || process.argv[1].endsWith('seed.js')) {
+// Run only when this file is the entry point. Serverless hosts have no process.argv[1], so import must not depend on it.
+const isEntry = Boolean(process.argv[1]) && pathToFileURL(process.argv[1]).href === import.meta.url;
+if (isEntry) {
   main().catch((err) => {
     console.error(err);
     process.exit(1);
