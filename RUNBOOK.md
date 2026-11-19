@@ -28,7 +28,7 @@ Admin, Closures. Enter the date and save. The date disappears from the public sl
 Changing `SESSION_SECRET` signs everyone out. Do this if a secret leaks, and tell the owner first.
 
 ## Check the hold expiry job
-The API releases expired holds at once (they stop blocking times immediately) and tidies the records once a day, at 03:00 UTC, via Vercel Cron. Its log line is `expired unpaid holds` (info) or `expireHolds failed` (error). A repeated failure means the database is unreachable. Check Atlas first.
+Expired holds stop blocking times as soon as they pass. They are tidied to 'expired' whenever staff open Today or Bookings. There is no scheduled job. A failing request on those screens usually means the database is unreachable. Check Atlas first.
 
 ## Incidents
 - **Site down:** check `https://api.<domain>/api/v1/health`. If it returns 503, the database is unreachable. If it does not respond, restart the API host.

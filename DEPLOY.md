@@ -18,9 +18,8 @@ Recommended setup from docs/05 §Hosting. Two deploys: the static web app, and t
 The API is a separate Vercel project built from the same repository.
 
 1. In Vercel, **Add New Project**, import the repository, and set **Root Directory** to `.` (the repository root). Vercel reads the root `vercel.json` and the function in `api/index.js`, which re-exports the code in `backend/`.
-2. Add the environment variables below (Production), and also `CRON_SECRET` (at least 16 random characters).
+2. Add the environment variables below (Production).
 3. Deploy. Check that `https://<api-project>.vercel.app/api/v1/health` returns `{ "ok": true }`.
-4. Vercel Cron calls `/api/v1/internal/expire-holds` once a day at 03:00 UTC (the Hobby plan allows one cron run per day). It needs `CRON_SECRET` set. Expired holds stop blocking times as soon as they pass, so the daily run only tidies the records.
 5. Atlas must accept connections from Vercel. Allow `0.0.0.0/0` on the Atlas network list, and rely on the database user's password.
 
 ### Environment variables (API)
@@ -35,7 +34,6 @@ The API is a separate Vercel project built from the same repository.
 | `ADMIN_EMAIL` | yes (first deploy) | The owner's sign-in email |
 | `ADMIN_INITIAL_PASSWORD` | yes (first deploy) | At least 12 characters. The owner must change it on first sign-in. Remove it from the environment afterwards |
 | `LOG_LEVEL` | no | Defaults to `info` |
-| `CRON_SECRET` | yes (Vercel) | At least 16 random characters. Vercel Cron sends it to the expiry job |
 
 ## 4. Web on Vercel (first project)
 

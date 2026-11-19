@@ -13,7 +13,6 @@ import { BookingError } from './services/bookingService.js';
 import { authRouter } from './routes/auth.js';
 import { adminRouter } from './routes/admin.js';
 import { sessionMiddleware, originCheck, cookieName } from './middleware/auth.js';
-import { internalRouter } from './routes/internal.js';
 
 /**
  * Builds the Express app. Kept separate from server.js so tests can mount it.
@@ -48,7 +47,6 @@ export function createApp({ env, logger = createLogger({ level: env.LOG_LEVEL })
   app.use('/api/v1/bookings', bookingsRouter({ limits }));
   app.use('/api/v1/inquiries', inquiriesRouter({ limits }));
   app.use('/api/v1/auth', sessionMiddleware({ secret: sessionSecret, name: cookieName(env) }), authRouter({ env, secret: sessionSecret, enabled: rateLimit }));
-  app.use('/api/v1/internal', internalRouter({ logger, cronSecret: env.CRON_SECRET }));
   app.use('/api/v1/admin', originCheck(env.WEB_ORIGIN), sessionMiddleware({ secret: sessionSecret, name: cookieName(env) }), adminRouter());
 
   app.use((req, res) => {

@@ -2,7 +2,7 @@ import { Router } from 'express';
 import mongoose from 'mongoose';
 import { z } from 'zod';
 import { AppointmentType, Availability, AuditLog, Booking, BookingEvent, Exception, Inquiry, Settings } from '../models/index.js';
-import { transition, BookingError } from '../services/bookingService.js';
+import { transition, BookingError, expireHolds } from '../services/bookingService.js';
 import { requireAuth, requireRole } from '../middleware/auth.js';
 import { validate } from '../middleware/rateLimits.js';
 import { localDateKey, localMidnight } from '@happyday/shared/slots';
@@ -100,6 +100,7 @@ export function adminRouter() {
   // ---- Today ----
   router.get('/today', async (req, res, next) => {
     try {
+      await expireHolds();
       const days = Math.min(7, Math.max(1, Number(req.query.days) || 2));
       const todayKey = localDateKey(Date.now());
       const from = new Date(localMidnight(todayKey));
@@ -135,6 +136,7 @@ export function adminRouter() {
   // ---- Bookings ----
   router.get('/bookings', async (req, res, next) => {
     try {
+      await expireHolds();
       const filter = {};
       if (req.query.status) filter.status = String(req.query.status);
       if (req.query.from || req.query.to) {

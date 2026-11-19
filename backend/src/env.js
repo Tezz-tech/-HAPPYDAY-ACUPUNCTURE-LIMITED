@@ -15,7 +15,6 @@ const schema = z
     LOG_LEVEL: z.enum(['fatal', 'error', 'warn', 'info', 'debug', 'trace', 'silent']).default('info'),
     ADMIN_EMAIL: z.string().email().optional(),
     ADMIN_INITIAL_PASSWORD: z.string().min(12).optional(),
-    CRON_SECRET: z.string().min(16).optional(),
   })
   .superRefine((env, ctx) => {
     if (env.NODE_ENV !== 'production') return;

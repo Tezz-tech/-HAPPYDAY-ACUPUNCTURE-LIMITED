@@ -6,12 +6,6 @@
       "destination": "/api/index.js"
     }
   ],
-  "crons": [
-    {
-      "path": "/api/v1/internal/expire-holds",
-      "schedule": "0 3 * * *"
-    }
-  ],
   "buildCommand": "mkdir -p public",
   "framework": null,
   "installCommand": "npm ci --omit=dev",

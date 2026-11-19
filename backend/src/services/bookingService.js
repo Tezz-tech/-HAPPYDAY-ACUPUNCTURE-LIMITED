@@ -79,7 +79,7 @@ export async function loadSlotConfig() {
 
 /**
  * The set of lockKey strings for holds that count right now. Holds on bookings that are awaiting payment
- * past their hold expiry are ignored, even before the cron job has released them (docs/04).
+ * past their hold expiry are ignored, even before they have been released (docs/04).
  * @param {Date} from
  * @param {Date} to
  * @param {number} [now]
@@ -275,7 +275,7 @@ export async function transition(bookingId, to, opts) {
 }
 
 /**
- * Expires awaiting_payment holds whose time has passed. Run once a day by the Vercel Cron (or every 5 minutes locally), and holds are also
+ * Expires awaiting_payment holds whose time has passed. Called when staff open the admin, and holds are also
  * ignored by heldLocks, so timing is not critical.
  * @param {number} [now]
  * @returns {Promise<number>} how many were expired
