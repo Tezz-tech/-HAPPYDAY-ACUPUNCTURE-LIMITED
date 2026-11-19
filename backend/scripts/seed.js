@@ -1,6 +1,6 @@
 import { pathToFileURL } from 'node:url';
 // Seeds the database from /content (docs/05). Idempotent: running it twice changes nothing new.
-// Usage: npm run seed -w api  (set MONGODB_URI, or it uses the in-memory dev database)
+// Usage: npm run seed -w @happyday/api  (set MONGODB_URI, or it uses the in-memory dev database)
 import clinic from '../../content/clinic.json' with { type: 'json' };
 import { loadEnv } from '../src/env.js';
 import { connectDb } from '../src/db.js';

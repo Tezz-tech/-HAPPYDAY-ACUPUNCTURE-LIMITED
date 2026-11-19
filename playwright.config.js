@@ -22,7 +22,7 @@ export default defineConfig({
   ],
   webServer: [
     {
-      command: 'npm run dev -w api',
+      command: 'npm run dev -w @happyday/api',
       url: `http://localhost:${API_PORT}/api/v1/health`,
       reuseExistingServer: false,
       timeout: 180_000,

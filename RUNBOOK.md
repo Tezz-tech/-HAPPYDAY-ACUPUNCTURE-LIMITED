@@ -16,7 +16,7 @@ The database is the only thing that cannot be rebuilt.
 
 ## Rotate the admin password
 - Signed-in owner: Settings is not where this lives. Use the password change screen on first sign-in. For a forgotten password, follow the next step.
-- Forgotten password: an operator sets a new hash in the database. Run `npm run seed -w api` is not enough, because the seed only creates the owner when none exists. Use a one-off script that calls `hashPassword` from `api/src/services/auth.js` and updates the `users` document, setting `mustChangePassword: true`. Do not store the new password in a file or in chat.
+- Forgotten password: an operator sets a new hash in the database. Run `npm run seed -w @happyday/api` is not enough, because the seed only creates the owner when none exists. Use a one-off script that calls `hashPassword` from `backend/src/services/auth.js` and updates the `users` document, setting `mustChangePassword: true`. Do not store the new password in a file or in chat.
 
 ## Change the bank details
 Owner: Admin, Settings, bank section. The change applies to new bookings at once. Existing awaiting-payment bookings keep the details they were shown.

@@ -11,6 +11,7 @@
     "test": "vitest run --config vitest.config.js"
   },
   "dependencies": {
+    "@happyday/shared": "*",
     "cookie-parser": "^1.4.7",
     "express": "^5.3.0",
     "express-rate-limit": "^8.7.4",

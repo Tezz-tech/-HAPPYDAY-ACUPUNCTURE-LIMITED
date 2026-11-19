@@ -12,7 +12,8 @@
       "schedule": "0 3 * * *"
     }
   ],
-  "buildCommand": "true",
+  "buildCommand": "mkdir -p public",
   "framework": null,
-  "installCommand": "npm ci --omit=dev"
+  "installCommand": "npm ci --omit=dev",
+  "outputDirectory": "public"
 }

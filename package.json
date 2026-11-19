@@ -8,17 +8,17 @@
   },
   "workspaces": [
     "shared",
-    "api",
+    "backend",
     "web"
   ],
   "scripts": {
-    "dev": "concurrently -n web,api -c cyan,magenta \"npm run dev -w web\" \"npm run dev -w api\"",
-    "seed": "npm run seed -w api",
+    "dev": "concurrently -n web,api -c cyan,magenta \"npm run dev -w web\" \"npm run dev -w @happyday/api\"",
+    "seed": "npm run seed -w @happyday/api",
     "build": "npm run build -w web && npm run lint-copy",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "test": "npm run test -w api",
-    "test:api": "npm run test -w api",
+    "test": "npm run test -w @happyday/api",
+    "test:api": "npm run test -w @happyday/api",
     "test:e2e": "playwright test",
     "lint-copy": "node scripts/lint-copy.js",
     "check:todos": "node scripts/check-todos.js",
