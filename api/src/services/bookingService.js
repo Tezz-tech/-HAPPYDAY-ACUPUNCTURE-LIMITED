@@ -275,7 +275,7 @@ export async function transition(bookingId, to, opts) {
 }
 
 /**
- * Expires awaiting_payment holds whose time has passed. Run every 5 minutes by the job, and holds are also
+ * Expires awaiting_payment holds whose time has passed. Run once a day by the Vercel Cron (or every 5 minutes locally), and holds are also
  * ignored by heldLocks, so timing is not critical.
  * @param {number} [now]
  * @returns {Promise<number>} how many were expired
