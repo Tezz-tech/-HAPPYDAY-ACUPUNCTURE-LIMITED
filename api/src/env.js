@@ -13,18 +13,12 @@ const schema = z
     MONGODB_URI: z.string().optional(),
     SESSION_SECRET: z.string().min(32).optional(),
     LOG_LEVEL: z.enum(['fatal', 'error', 'warn', 'info', 'debug', 'trace', 'silent']).default('info'),
-    SMTP_HOST: z.string().optional(),
-    SMTP_PORT: z.coerce.number().int().optional(),
-    SMTP_USER: z.string().optional(),
-    SMTP_PASS: z.string().optional(),
-    MAIL_FROM: z.string().optional(),
-    NOTIFY_EMAILS: z.string().optional(),
     ADMIN_EMAIL: z.string().email().optional(),
     ADMIN_INITIAL_PASSWORD: z.string().min(12).optional(),
   })
   .superRefine((env, ctx) => {
     if (env.NODE_ENV !== 'production') return;
-    for (const key of ['MONGODB_URI', 'SESSION_SECRET', 'SMTP_HOST', 'MAIL_FROM']) {
+    for (const key of ['MONGODB_URI', 'SESSION_SECRET']) {
       if (!env[key])
         ctx.addIssue({ code: 'custom', path: [key], message: `${key} is required in production` });
     }

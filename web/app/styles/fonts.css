@@ -1,43 +1,22 @@
-/* Self-hosted, Latin + Latin Extended subsets (see scripts/subset-fonts.js). */
-@font-face {
-  font-family: 'Gambetta';
-  src: url('/fonts/gambetta-400.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Gambetta';
-  src: url('/fonts/gambetta-400-italic.woff2') format('woff2');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Gambetta';
-  src: url('/fonts/gambetta-500.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
+/* Self-hosted Switzer, Latin + Latin Extended subsets (see scripts/subset-fonts.js). One family for the whole site. */
 @font-face {
   font-family: 'Switzer';
   src: url('/fonts/switzer-400.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: optional;
 }
 @font-face {
   font-family: 'Switzer';
   src: url('/fonts/switzer-500.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
-  font-display: swap;
+  font-display: optional;
 }
 @font-face {
   font-family: 'Switzer';
   src: url('/fonts/switzer-600.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
-  font-display: swap;
+  font-display: optional;
 }

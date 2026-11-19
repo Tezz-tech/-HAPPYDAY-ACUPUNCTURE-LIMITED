@@ -1,21 +1,16 @@
 import { Button } from '../components/ui/Button.jsx';
 import { SectionHead } from '../components/layout/SectionHead.jsx';
 import { Hero } from '../components/features/Hero.jsx';
-import { Meridian } from '../components/layout/Meridian.jsx';
-import { BodyMapSection } from '../components/features/BodyMapSection.jsx';
+import { Gallery } from '../components/features/Gallery.jsx';
 import { TreatmentIndex } from '../components/features/TreatmentIndex.jsx';
 import { VisitSteps } from '../components/features/VisitSteps.jsx';
-import { NeedleScale } from '../components/features/NeedleScale.jsx';
 import { FaqList } from '../components/features/FaqList.jsx';
 import { VisitCard } from '../components/features/VisitCard.jsx';
-import { PhotoStrip } from '../components/features/PhotoStrip.jsx';
-import { PortraitSlot } from '../components/brand/PortraitSlot.jsx';
-import { Picture } from '../components/ui/Picture.jsx';
 import { TextLink } from '../components/ui/TextLink.jsx';
 import { JsonLd } from '../components/seo/JsonLd.jsx';
 import { clinic, homeFaqs, treatments } from '../content/index.js';
 import { seoMeta } from '../lib/seo.js';
-import { ADDRESS, PHONE_DISPLAY, PHONE_TEL, SITE_URL, WA_LINKS } from '../lib/site.js';
+import { PHONE_DISPLAY, PHONE_TEL, SITE_URL, WA_LINKS } from '../lib/site.js';
 
 export function meta() {
   return seoMeta({
@@ -52,116 +47,75 @@ export default function Home() {
   return (
     <main className="page page-home">
       <JsonLd data={medicalClinic} />
-      <Meridian />
 
-      {/* §1 Hero */}
       <Hero />
 
-      {/* §2 Where does it hurt? */}
-      <section className="section" aria-labelledby="body-map-title">
-        <SectionHead
-          code="LI4"
-          pinyin="Hégǔ"
-          id="body-map-title"
-          title={
-            <>
-              Start with what&rsquo;s <em>bothering</em> you.
-            </>
-          }
-        />
-        <BodyMapSection />
+      <section className="section" aria-labelledby="gallery-title">
+        <SectionHead id="gallery-title" title="Inside the clinic" />
+        <Gallery />
       </section>
 
-      {/* §3 Treatment areas */}
       <section className="section" aria-labelledby="areas-title">
         <SectionHead
-          code="ST36"
-          pinyin="Zúsānlǐ"
           id="areas-title"
           title="What we help with"
           lead="Ten areas of care, from long-standing back pain to fertility support. Each one starts with listening."
-          columns="right"
         />
         <TreatmentIndex />
         <p className="section-more">
-          <TextLink to="/treatments">See all treatment areas →</TextLink>
+          <TextLink to="/treatments">See all treatment areas</TextLink>
         </p>
       </section>
 
-      {/* §4 First visit */}
       <section className="section" aria-labelledby="visit-title">
-        <SectionHead code="PC6" pinyin="Nèiguān" id="visit-title" title="Your first visit, step by step" />
+        <SectionHead id="visit-title" title="Your first visit, step by step" />
         <VisitSteps />
         <p className="section-more">
-          <TextLink to="/your-visit">Everything about your visit →</TextLink>
+          <TextLink to="/your-visit">Everything about your visit</TextLink>
         </p>
       </section>
 
-      {/* §5 Needle scale */}
-      <section className="section section-dark surface-dark" aria-labelledby="scale-title">
+      <section className="section section-dark" aria-labelledby="scale-title">
         <SectionHead
-          code="HT7"
-          pinyin="Shénmén"
           id="scale-title"
           dark
-          title={
-            <>
-              Thinner than <em>you think.</em>
-            </>
-          }
+          title="Thinner than you think."
           lead="An acupuncture needle is solid and about as fine as a few hairs together. An injection needle is hollow and roughly three times wider. Most people feel a light tap, then very little."
         />
-        <NeedleScale />
       </section>
 
-      {/* §6 Practitioner */}
-      <section className="section practitioner" aria-labelledby="practitioner-title">
-        <SectionHead code="KI3" pinyin="Tàixī" id="practitioner-title" title={`Meet ${clinic.founder.name}`} />
-        <div className="practitioner-grid">
-          <PortraitSlot />
-          <div className="practitioner-copy">
-            <p className="label">{clinic.founder.role} · Dip. Acupuncture &amp; Moxibustion</p>
-            <p className="type-body">
-              Happyday Acupuncture opened in 2024 with a simple belief: good health deserves time, attention and a personal
-              approach. Every treatment here begins with listening, and every plan is built around the person on the bed,
-              not a template.
-            </p>
-            <Picture id="abdomen-ring-duotone" sizes="(min-width: 768px) 260px, 60vw" alt="" className="practitioner-pic" />
-            <TextLink to="/about">About the clinic →</TextLink>
+      <section className="section" aria-labelledby="practitioner-title">
+        <div className="practitioner-text" data-reveal>
+          <p className="label">{clinic.founder.role} · Dip. Acupuncture &amp; Moxibustion</p>
+          <h2 id="practitioner-title" className="type-display-m">
+            Meet {clinic.founder.name}
+          </h2>
+          <p className="type-lead">
+            Happyday Acupuncture opened in 2024 with a simple belief: good health deserves time, attention and a personal
+            approach. Every treatment here begins with listening, and every plan is built around the person on the bed, not
+            a template.
+          </p>
+          <ul className="fact-list">
+            <li>Dip. Acupuncture &amp; Moxibustion</li>
+            <li>Clinic opened in {clinic.foundedYear}</li>
+            <li>{clinic.address.area}, {clinic.address.state}</li>
+          </ul>
+          <div>
+            <TextLink to="/about">About the clinic</TextLink>
           </div>
         </div>
       </section>
 
-      {/* §7 Inside the clinic */}
-      <section className="section section-tight" aria-labelledby="inside-title">
-        <h2 id="inside-title" className="type-display-s">
-          Inside the clinic
-        </h2>
-        <PhotoStrip />
-      </section>
-
-      {/* §9 Questions */}
       <section className="section" aria-labelledby="faq-title">
-        <SectionHead code="CV6" pinyin="Qìhǎi" id="faq-title" title="Good questions" />
+        <SectionHead id="faq-title" title="Good questions" />
         <FaqList items={homeFaqs} label="Common questions" />
         <p className="section-more">
-          <TextLink to="/your-visit">All questions →</TextLink>
+          <TextLink to="/your-visit">All questions</TextLink>
         </p>
       </section>
 
-      {/* §10 Visit and book */}
       <section className="section" aria-labelledby="visit-band-title">
-        <SectionHead
-          code="KI1"
-          pinyin="Yǒngquán"
-          id="visit-band-title"
-          title={
-            <>
-              Come and see us in <em>Jabi.</em>
-            </>
-          }
-        />
-        <p className="type-lead">{ADDRESS}</p>
+        <SectionHead id="visit-band-title" title="Find us in Jabi." />
         <VisitCard />
         <div className="section-actions">
           <Button to="/book" variant="primary" cta>

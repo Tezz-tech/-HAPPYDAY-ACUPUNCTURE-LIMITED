@@ -1,22 +1,14 @@
-import { AcupointLabel } from '../ui/AcupointLabel.jsx';
-import { Rule } from '../ui/Rule.jsx';
-
 /**
- * A section opener: a hairline with its acupoint label on it, a point on the meridian, then the heading.
- * @param {{
- *   code: string, pinyin?: string, title: import('react').ReactNode, lead?: string,
- *   dark?: boolean, id?: string, className?: string, columns?: 'left' | 'right'
- * }} props
+ * A section heading: a display title with an optional lead. `dark` switches to the paper-on-green palette.
+ * @param {{ id: string, title: import('react').ReactNode, lead?: string, dark?: boolean }} props
  */
-export function SectionHead({ code, pinyin, title, lead, dark = false, id, className = '', columns = 'left' }) {
+export function SectionHead({ id, title, lead, dark = false }) {
   return (
-    <header className={`section-head section-head-${columns} ${className}`.trim()}>
-      <Rule dark={dark} label={<AcupointLabel code={code} pinyin={pinyin} />} />
-      <span className="section-point" aria-hidden="true" />
-      <h2 id={id} className={`type-display-m ${dark ? 'on-dark' : ''}`.trim()}>
+    <header className="section-head" data-reveal>
+      <h2 id={id} className={`type-display-m ${dark ? 'on-dark' : ''}`}>
         {title}
       </h2>
-      {lead ? <p className="type-lead section-lead">{lead}</p> : null}
+      {lead ? <p className={`type-lead section-lead ${dark ? 'on-dark-soft' : ''}`}>{lead}</p> : null}
     </header>
   );
 }

@@ -32,7 +32,6 @@ Living log for the build. `/next-phase` reads this to find where to pick up. Upd
 3. **`prettier --write` must not touch client files.** I ran it over the whole repo by mistake, which reformatted `docs/`, `content/`, `assets/` and `.claude/`. I restored all 121 files from the original kit (`Downloads/happyday-build.zip`) and verified the hashes. `.prettierignore` now excludes client-owned paths.
 4. **CSP for the web.** The prerendered HTML has inline hydration scripts, so `script-src 'self'` breaks them. Plan: a post-build step computes SHA-256 hashes of the inline scripts and writes them into the CSP in `_headers` for Cloudflare Pages. Helmet on the API is separate.
 5. **Node version.** `.nvmrc` is 24 (LTS). The machine has Node 26.5, so the build runs there too.
-6. **Email previews** go to `api/emails-preview/`, which is gitignored, not `/tmp`.
 
 ## Phase 2 and 3: what was built
 
@@ -76,7 +75,7 @@ Living log for the build. `/next-phase` reads this to find where to pick up. Upd
 ## Gaps before launch (Phase 4 and 5)
 
 - Reschedule is not built (the API route and the UI). Cancel is built. The manage page links to WhatsApp for changes.
-- Email notifications are not built. The docs ask for them in Phase 5.
+- The site does not send email. SMTP and the notification settings were removed; the clinic contacts patients on WhatsApp and by phone.
 - Keyboard-only booking and axe on each booking step are not tested yet.
 - Coverage of slots.js is not measured against the 95% target.
 - Concurrency test: three runs, not ten.
@@ -88,7 +87,7 @@ Living log for the build. `/next-phase` reads this to find where to pick up. Upd
 - Launch docs: SECURITY.md (checklist against docs/05, ticked only where built and tested), DEPLOY.md, RUNBOOK.md, HANDOVER.md.
 - CI and budgets: .github/workflows/ci.yml (lint, copy checks, tests, audit, build, Playwright, Lighthouse), lighthouserc.json with the docs/05 budgets, dependabot.yml.
 - Tests: API 75 of 75 pass (includes 12 admin tests). Browser suite 25 of 25 pass on both viewports.
-- Dependency audit: nodemailer upgraded to clear a high-severity advisory. npm audit --omit=dev reports zero findings.
+- Dependency audit: npm audit --omit=dev reports zero findings.
 
 ## Decisions (Phase 6 and 7)
 
@@ -101,7 +100,7 @@ Living log for the build. `/next-phase` reads this to find where to pick up. Upd
 
 - **Not deployed:** nothing in DEPLOY.md has been run against Atlas, Render or Cloudflare. The domain is still a placeholder.
 - **Not run:** Lighthouse CI (config written, not executed), the full /design-qa pass, the reduced-motion and 768 px review.
-- **Booking:** reschedule (API and UI), email notifications, reminder tracking (the reminder link does not record that it was sent).
+- **Booking:** reschedule (API and UI), reminder tracking (the reminder link does not record that it was sent).
 - **Admin:** the CSV export of bookings, the patient export and delete by phone number, the audit view UI (the API exists), the one-off password reset script (described in RUNBOOK.md but not written).
 - **Retention:** the 24-month anonymisation job is not built. Backups are documented but not scheduled.
 - **OG images:** not generated (docs/05 asks for them at build time).
@@ -112,7 +111,7 @@ Living log for the build. `/next-phase` reads this to find where to pick up. Upd
 ## Next
 
 - Run the deploy steps in DEPLOY.md with the client's domain, then run Lighthouse CI against the live site.
-- Build the gaps listed above in order of launch risk: reschedule, email, retention.
+- Build the gaps listed above in order of launch risk: reschedule, retention.
 
 ## Open client items
 

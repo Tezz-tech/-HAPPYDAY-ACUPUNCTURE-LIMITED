@@ -1,6 +1,5 @@
 import { Link } from 'react-router';
-import { Picture } from '../components/ui/Picture.jsx';
-import { AcupointLabel } from '../components/ui/AcupointLabel.jsx';
+import { SplitFeature } from '../components/features/SplitFeature.jsx';
 import { FaqList } from '../components/features/FaqList.jsx';
 import { VisitSteps } from '../components/features/VisitSteps.jsx';
 import { TreatmentIndex } from '../components/features/TreatmentIndex.jsx';
@@ -33,7 +32,6 @@ export default function Treatment({ params }) {
   const generalFaqs = faqs.filter((f) => GENERAL_FAQ_IDS.includes(f.id));
   const others = nextTreatments(t.slug, 3);
   const lower = t.name.charAt(0).toLowerCase() + t.name.slice(1);
-  const photo = t.photo;
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'MedicalWebPage',
@@ -52,28 +50,23 @@ export default function Treatment({ params }) {
   };
 
   return (
-    <main className="page page-treatment">
+    <main className="page page-inner page-treatment">
       <JsonLd data={jsonLd} />
       <JsonLd data={crumbs} />
 
       <nav aria-label="Breadcrumb" className="breadcrumb">
-        <Link to="/treatments" className="link-underline">
-          Treatments
-        </Link>
+        <Link to="/treatments">Treatments</Link>
         <span aria-hidden="true"> / </span>
         <span>{t.name}</span>
       </nav>
 
       <section className="page-hero" aria-labelledby="treatment-title">
-        <AcupointLabel code={t.acupoint.code} pinyin={t.acupoint.pinyin} />
-        <h1 id="treatment-title" className="type-display-l">
-          {t.name}
-        </h1>
-        <p className="type-lead">{t.intro}</p>
-      </section>
-
-      <section className="section section-tight" aria-label="Photo">
-        <Picture id={photo} sizes="(min-width: 768px) 520px, 90vw" alt={undefined} priority />
+        <SplitFeature photo={t.photo} sizes="(min-width: 900px) 46vw, 92vw" reverse>
+          <h1 id="treatment-title" className="type-display-l">
+            {t.name}
+          </h1>
+          <p className="type-lead">{t.intro}</p>
+        </SplitFeature>
       </section>
 
       <section className="section" aria-labelledby="help-title">
@@ -92,7 +85,9 @@ export default function Treatment({ params }) {
           What to expect
         </h2>
         <p className="type-body">{t.whatToExpect}</p>
-        <VisitSteps compact />
+        <div className="section-tight">
+          <VisitSteps />
+        </div>
       </section>
 
       {t.safetyNote ? (
@@ -111,7 +106,7 @@ export default function Treatment({ params }) {
       </section>
 
       <section className="section section-tight">
-        <p className="type-small care-note">{CARE_NOTE}</p>
+        <p className="care-note">{CARE_NOTE}</p>
       </section>
 
       <section className="section">

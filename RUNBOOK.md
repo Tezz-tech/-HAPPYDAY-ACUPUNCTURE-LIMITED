@@ -33,4 +33,3 @@ The API runs the job every five minutes. Its log line is `expired unpaid holds` 
 ## Incidents
 - **Site down:** check `https://api.<domain>/api/v1/health`. If it returns 503, the database is unreachable. If it does not respond, restart the API host.
 - **Double booking reported:** this should be impossible. Check the seat locks for the slot in the database and the booking events, and record the refs. Escalate to the developer.
-- **Email not arriving:** check SPF, DKIM and DMARC on the domain, and the SMTP provider's dashboard. Emails are not sent until the notification work is built.

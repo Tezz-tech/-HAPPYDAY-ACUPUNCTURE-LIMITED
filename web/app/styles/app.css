@@ -1,12 +1,14 @@
 @import 'tailwindcss';
 @import './fonts.css';
 @import './components.css';
-@import './layout.css';
-@import './motion.css';
+@import './site.css';
+@import './flows.css';
+@import './admin.css';
 
 /*
- * Design tokens from docs/02. The default Tailwind palette and type scale are
- * removed on purpose, so classes like bg-blue-500 do not exist.
+ * Design tokens. The default Tailwind palette and type scale are removed on purpose, so classes like
+ * bg-blue-500 do not exist. Token names are kept from the first build so the booking and admin screens
+ * pick up the new palette without a rename; the values are the 2026 redesign (see REDESIGN.md).
  */
 @theme {
   --color-*: initial;
@@ -19,27 +21,30 @@
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
 
-  --color-ink: #10241a;
-  --color-forest-900: #0b2a1a;
-  --color-forest-700: #0b401d;
-  --color-forest-500: #2c6e30;
-  --color-jade-300: #9db8a4;
-  --color-gold-400: #d9ba3f;
+  --color-ink: #101614;
+  --color-forest-900: #0a2216;
+  --color-forest-700: #0f3b24;
+  --color-forest-500: #1f6b42;
+  --color-jade-300: #a9c9b6;
+  --color-gold-400: #e7c65c;
   --color-gold-700: #7a5c17;
-  --color-stone-600: #5b6660;
-  --color-paper: #f4efe6;
-  --color-bone: #fbf8f2;
-  --color-cinnabar: #b5432f;
-  --color-line: rgb(16 36 26 / 0.12);
-  --color-line-dark: rgb(244 239 230 / 0.14);
+  --color-stone-600: #5c6661;
+  --color-paper: #f7f6f2;
+  --color-bone: #ffffff;
+  --color-surface: #eceee8;
+  --color-cinnabar: #b3361f;
+  --color-line: rgb(16 22 20 / 0.1);
+  --color-line-dark: rgb(255 255 255 / 0.14);
 
-  --font-display: 'Gambetta', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --font-display: 'Switzer', 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
   --font-sans: 'Switzer', 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
 
-  --radius-sm: 4px;
-  --radius-md: 10px;
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
 
-  --shadow-float: 0 8px 30px rgb(11 42 26 / 0.12);
+  --shadow-float: 0 12px 40px rgb(10 34 22 / 0.14);
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
@@ -73,16 +78,5 @@
   :focus-visible {
     outline: 2px solid var(--color-forest-500);
     outline-offset: 2px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 1ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 200ms !important;
-    scroll-behavior: auto !important;
   }
 }

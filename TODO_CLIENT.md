@@ -28,8 +28,8 @@ Total: 27 (17 launch-blocking).
 | 20 | Before launch | `content/clinic.json` | `contact.socials.facebook` | TODO_CLIENT |
 | 21 | Before launch | `content/clinic.json` | `contact.socials.tiktok` | TODO_CLIENT |
 | 22 | Before launch | `content/clinic.json` | `contact.socials.x` | TODO_CLIENT |
-| 23 | Before launch | `web/app/components/features/VisitCard.jsx:37` | `code` | {clinic.address.directionsHint.startsWith('TODO_CLIENT') ? null : ( |
-| 24 | Before launch | `web/app/components/layout/Footer.jsx:13` | `code` | const cacConfirmed = !clinic.cacRcNumber.startsWith('TODO_CLIENT'); |
+| 23 | Before launch | `web/app/components/features/VisitCard.jsx:23` | `code` | {clinic.address.directionsHint.startsWith('TODO_CLIENT') ? null : ( |
+| 24 | Before launch | `web/app/components/layout/Footer.jsx:10` | `code` | const cacConfirmed = !clinic.cacRcNumber.startsWith('TODO_CLIENT'); |
 | 25 | Before launch | `web/app/lib/site-url.js:1` | `code` | // TODO_CLIENT: confirm the live domain. docs/01 suggests happydayacupuncture.com, which is not yet registered for this project. |
-| 26 | Before launch | `web/app/routes/about.jsx:55` | `code` | {/* Bio is a placeholder until the client supplies it (TODO_CLIENT in content/clinic.json). */} |
-| 27 | Before launch | `web/app/routes/contact.jsx:18` | `code` | const emailTodo = clinic.contact.email.startsWith('TODO_CLIENT'); |
+| 26 | Before launch | `web/app/routes/about.jsx:56` | `code` | {/* The full bio is a placeholder until the client supplies it (TODO_CLIENT in content/clinic.json). */} |
+| 27 | Before launch | `web/app/routes/contact.jsx:41` | `code` | const emailTodo = clinic.contact.email.startsWith('TODO_CLIENT'); |

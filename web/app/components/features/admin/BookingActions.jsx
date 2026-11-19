@@ -1,9 +1,13 @@
 import { useState } from 'react';
 import { api, ApiError } from '../../../lib/api.js';
 import { Button } from '../../ui/Button.jsx';
+import { useToast } from '../../../hooks/useToast.js';
+
+const DONE = { markPaid: 'Payment recorded.', confirm: 'Booking confirmed.', complete: 'Visit marked complete.', noShow: 'Marked as no-show.', cancel: 'Booking cancelled.' };
 
 /** Status actions for one booking. Mark paid asks for the amount received first (docs/04). */
 export function BookingActions({ booking, onChanged, onError }) {
+  const toast = useToast();
   const [amount, setAmount] = useState('');
   const [asking, setAsking] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -13,6 +17,7 @@ export function BookingActions({ booking, onChanged, onError }) {
     try {
       await api(`/admin/bookings/${booking.id}`, { method: 'PATCH', body: { action, ...extra } });
       setAsking(false);
+      toast.show(DONE[action] ?? 'Saved.');
       onChanged();
     } catch (err) {
       onError(err instanceof ApiError ? err.message : 'That did not work. Please try again.');

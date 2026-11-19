@@ -1,35 +1,23 @@
-import { LQIP, PHOTOS } from '../../content/photos.generated.js';
-import { useInView } from '../../hooks/useInView.js';
+import { PHOTOS } from '../../content/photos.generated.js';
 
 /**
- * Responsive photo: AVIF, then WebP, then JPG, inside a fixed aspect-ratio frame with a blurred LQIP.
- * The image clip-reveals once when it enters the viewport. It never displays wider than the
- * manifest's maxDisplayWidthCss (docs/02 §5.7).
+ * Responsive photo: AVIF, then WebP, then JPG, inside a fixed aspect-ratio frame. The frame has a flat
+ * background and the image fades in with CSS, so it never shows as fragments and never gets stuck hidden.
+ * It never displays wider than the manifest's maxDisplayWidthCss (docs/02 §5.7).
  * @param {{
- *   id: string, sizes?: string, alt?: string, caption?: string, reveal?: boolean,
- *   priority?: boolean, className?: string, maxWidth?: number
+ *   id: string, sizes?: string, alt?: string, caption?: string, priority?: boolean,
+ *   className?: string, maxWidth?: number
  * }} props
  */
-export function Picture({ id, sizes = '100vw', alt, caption, reveal = true, priority = false, className = '', maxWidth }) {
+export function Picture({ id, sizes = '100vw', alt, caption, priority = false, className = '', maxWidth }) {
   const photo = PHOTOS[id];
   if (!photo) throw new Error(`Unknown photo id: ${id}`);
-  const { ref, inView } = useInView({ threshold: 0.15 });
   const src = (ext) => `/photos/${photo.files[ext]}`;
   const displayMax = maxWidth ? Math.min(maxWidth, photo.maxDisplayWidthCss) : photo.maxDisplayWidthCss;
 
-  const frameClass = ['pic-frame', reveal ? 'reveal-clip' : '', inView || !reveal ? 'is-in' : '']
-    .filter(Boolean)
-    .join(' ');
-
   return (
-    <figure className={`pic ${className}`.trim()} ref={ref} style={{ maxWidth: `${displayMax}px` }}>
-      <div
-        className={frameClass}
-        style={{
-          aspectRatio: `${photo.width} / ${photo.height}`,
-          backgroundImage: `url(${LQIP[id]})`,
-        }}
-      >
+    <figure className={`pic ${className}`.trim()} style={{ maxWidth: `${displayMax}px` }}>
+      <div className="pic-frame" style={{ aspectRatio: `${photo.width} / ${photo.height}` }}>
         <picture>
           <source type="image/avif" srcSet={src('avif')} sizes={sizes} />
           <source type="image/webp" srcSet={src('webp')} sizes={sizes} />

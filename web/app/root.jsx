@@ -8,17 +8,18 @@ import './styles/app.css';
  */
 export function Layout({ children }) {
   return (
-    <html lang="en-GB">
+    <html lang="en-GB" style={{ backgroundColor: "#F7F6F2", color: "#101614", colorScheme: "light" }}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#0B401D" />
+        <meta name="theme-color" content="#0F3B24" />
+        <meta name="color-scheme" content="light" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <Meta />
         <Links />
       </head>
-      <body>
+      <body style={{ backgroundColor: "#F7F6F2", margin: 0 }}>
         {children}
         <ScrollRestoration />
         <Scripts />

@@ -7,17 +7,11 @@ test.describe('home page', () => {
     page.on('console', (m) => m.type() === 'error' && errors.push(m.text()));
     page.on('pageerror', (e) => errors.push(e.message));
     await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    // The embedded map keeps making requests, so 'networkidle' never settles. Wait for the load event instead.
+    await page.waitForLoadState('load');
     await expect(page.locator('h1')).toHaveCount(1);
     await expect(page.locator('h1')).toContainText('Heal naturally.');
     expect(errors).toEqual([]);
-  });
-
-  test('the body map list selects a region and shows its conditions', async ({ page }) => {
-    await page.goto('/');
-    await page.getByRole('button', { name: 'Back & hips' }).click();
-    await expect(page.getByRole('button', { name: 'Back & hips' })).toHaveAttribute('aria-pressed', 'true');
-    await expect(page.locator('.region-conditions')).toContainText('Sciatica');
   });
 
   test('the accordion opens one answer at a time', async ({ page }) => {
@@ -36,8 +30,15 @@ test.describe('home page', () => {
   test('has no serious axe violations', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
-    // Scan only after the hero intro has finished, so faded-in text is not measured mid-animation.
-    await expect(page.locator('.hero-facts')).toHaveCSS('opacity', '1');
+    // Scroll the whole page first, so every section has revealed before it is measured.
+    await page.evaluate(async () => {
+      for (let y = 0; y <= document.body.scrollHeight; y += 400) {
+        window.scrollTo(0, y);
+        await new Promise((r) => setTimeout(r, 60));
+      }
+    });
+    await expect(page.locator('.visit-step').last()).toHaveCSS('opacity', '1');
+    await page.evaluate(() => window.scrollTo(0, 0));
     const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
     const serious = results.violations.filter((v) => ['serious', 'critical'].includes(v.impact));
     expect(serious, serious.map((v) => `${v.id}: ${v.help}`).join('\n')).toEqual([]);

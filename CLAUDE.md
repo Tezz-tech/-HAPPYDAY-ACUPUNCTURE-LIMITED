@@ -25,9 +25,9 @@ The quality bar is a studio-built, award-level site. It must never look template
 - Use npm workspaces. Use the latest stable version of every package, and check the docs of anything that changed after your training data.
 
 ## Non-negotiables
-- **No invented content.** No fake testimonials, review counts, star ratings, patient numbers, years of experience, awards, certifications or prices. If a fact is missing, render a tasteful fallback (see docs/03) and add it to `TODO_CLIENT.md`. Every `TODO_CLIENT` string in `/content` must surface in `npm run check:todos`.
+
 - **Medical claims follow docs/03 §0.** Use "support", "may help" and "alongside your medical care". Never write "cure", "treat infertility", "guaranteed" or "100%". Stroke and emergency disclaimers appear wherever docs/03 says.
-- **Privacy:** patient photos are used only from `/assets/photos` (faces already blurred). Never add unblurred patient images. Health data falls under the Nigeria Data Protection Act 2023: get explicit consent, collect the minimum, and keep PII out of logs.
+
 - **Performance budget (mobile, throttled 4G, Moto G-class):** LCP < 2.0 s, CLS < 0.05, INP < 200 ms. Home page JS ≤ 160 KB gzipped on first load, fonts ≤ 110 KB, total home page weight ≤ 1.2 MB. Lighthouse mobile: Performance ≥ 90, Accessibility = 100, Best Practices ≥ 95, SEO = 100.
 - **Accessibility:** WCAG 2.2 AA. Every interaction works by keyboard, focus is always visible, and `prefers-reduced-motion` gets a fully designed calm version, not a broken one. Touch targets are ≥ 44 px.
 - **Double-booking is impossible.** The slot engine and the seat-lock unique index (docs/04) are the most-tested code in the repo.
@@ -42,7 +42,7 @@ These patterns are banned. If you notice yourself reaching for one, stop and re-
 - Inter, Poppins, Montserrat, Roboto, Open Sans, Playfair Display, Cormorant. Default Tailwind colours (`blue-500`, `gray-100` and the like): use tokens only.
 - `rounded-2xl shadow-lg` cards everywhere. Shadows are rare and soft, and the corner radius comes from tokens.
 - Copy words: elevate, unlock, journey, seamless, empower, transform, holistic solutions, discover the power, cutting-edge, state-of-the-art, "your wellness journey". At most one em dash per page.
-- Stock photos, AI-generated images, and the client's flyer artwork (`assets/reference/` is reference only).
+
 - Lorem ipsum. Ship real copy from docs/03 or a deliberate, designed placeholder.
 
 ## Conventions

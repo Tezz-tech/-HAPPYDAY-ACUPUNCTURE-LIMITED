@@ -3,52 +3,47 @@
  * Everything here uses design tokens from app.css, never raw palette values.
  */
 
-/* ---------- Type scale (docs/02 §4): clamp from 360 px to 1440 px ---------- */
+/* ---------- Type scale: one sans family, bold display, clamp from 360 px to 1440 px ---------- */
 .type-display-xl {
-  font: 400 clamp(52px, 26.67px + 7.037vw, 128px) / 0.95 var(--font-display);
-  letter-spacing: -0.025em;
+  font: 600 clamp(44px, 18px + 7vw, 104px) / 0.98 var(--font-sans);
+  letter-spacing: -0.035em;
   text-wrap: balance;
 }
 .type-display-l {
-  font: 400 clamp(40px, 24px + 4.444vw, 88px) / 1 var(--font-display);
-  letter-spacing: -0.02em;
+  font: 600 clamp(38px, 18px + 4.6vw, 72px) / 1.02 var(--font-sans);
+  letter-spacing: -0.03em;
   text-wrap: balance;
 }
 .type-display-m {
-  font: 400 clamp(32px, 24px + 2.222vw, 56px) / 1.05 var(--font-display);
+  font: 600 clamp(30px, 16px + 2.6vw, 52px) / 1.08 var(--font-sans);
+  letter-spacing: -0.025em;
   text-wrap: balance;
 }
 .type-display-s {
-  font: 500 clamp(24px, 21.33px + 0.741vw, 32px) / 1.15 var(--font-display);
+  font: 600 clamp(21px, 17px + 0.6vw, 26px) / 1.2 var(--font-sans);
+  letter-spacing: -0.015em;
   text-wrap: balance;
 }
 .type-lead {
-  font: 400 clamp(18px, 16.67px + 0.37vw, 22px) / 1.5 var(--font-sans);
-  max-width: 34ch;
+  font: 400 clamp(18px, 16.5px + 0.4vw, 21px) / 1.5 var(--font-sans);
+  color: var(--color-stone-600);
+  max-width: 36ch;
   text-wrap: pretty;
 }
 .type-body {
-  font: 400 clamp(16px, 15.67px + 0.0926vw, 17px) / 1.6 var(--font-sans);
-  max-width: 64ch;
+  font: 400 clamp(16px, 15.5px + 0.1vw, 17px) / 1.65 var(--font-sans);
+  max-width: 62ch;
   text-wrap: pretty;
 }
 .type-small {
-  font: 400 14px / 1.5 var(--font-sans);
+  font: 400 14px / 1.55 var(--font-sans);
+  color: var(--color-stone-600);
 }
-/* Section labels and acupoint codes (docs/02 §4). */
 .label {
-  font: 500 12px / 1.2 var(--font-sans);
-  font-variant-caps: all-small-caps;
-  letter-spacing: 0.08em;
-}
-.label-code {
-  font-variant-caps: normal;
+  font: 600 12px / 1.2 var(--font-sans);
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-.label-pinyin {
-  font-variant-caps: all-small-caps;
-  letter-spacing: 0.06em;
+  color: var(--color-forest-500);
 }
 
 /* ---------- Buttons (docs/02 §7) ---------- */
@@ -334,14 +329,14 @@ textarea.field-input ~ .field-label {
   color: var(--color-jade-300);
 }
 
-/* ---------- Pictures: duotone first, clip reveal once (docs/02 §5.7) ---------- */
+/* ---------- Pictures: a flat frame and a fade-in (no clip reveal) ---------- */
 .pic {
   margin: 0;
 }
 .pic-frame {
   position: relative;
   overflow: hidden;
-  background-color: var(--color-forest-900);
+  background-color: var(--color-surface);
   background-size: cover;
   background-position: center;
 }
@@ -350,20 +345,6 @@ textarea.field-input ~ .field-label {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-.reveal-clip picture,
-.reveal-clip img {
-  display: block;
-  clip-path: inset(100% 0 0 0);
-  transform: scale(1.08);
-  transition:
-    clip-path 900ms var(--ease-out-expo),
-    transform 900ms var(--ease-out-expo);
-}
-.reveal-clip.is-in picture,
-.reveal-clip.is-in img {
-  clip-path: inset(0 0 0 0);
-  transform: scale(1);
 }
 .pic-caption {
   margin-top: 12px;
@@ -424,31 +405,8 @@ textarea.field-input ~ .field-label {
   color: var(--color-paper);
 }
 
-/* ---------- Paper grain: fixed, never repaints on scroll (docs/02 §2) ---------- */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  pointer-events: none;
-  opacity: 0.035;
-  will-change: transform;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-}
-
 /* ---------- Reduced motion: fades only, nothing pinned or moving (docs/02 §6) ---------- */
 @media (prefers-reduced-motion: reduce) {
-  .reveal-clip picture,
-  .reveal-clip img {
-    clip-path: none;
-    transform: none;
-    transition: opacity 200ms ease-out;
-    opacity: 0;
-  }
-  .reveal-clip.is-in picture,
-  .reveal-clip.is-in img {
-    opacity: 1;
-  }
   .btn:active {
     transform: none;
   }

@@ -34,7 +34,7 @@ Status against docs/05 §Security. Ticked means built and tested in this repo. O
 ## Passwords and secrets
 - [x] Admin passwords are hashed with scrypt (Node's built-in memory-hard KDF). CLAUDE.md asks for argon2id. This is a deliberate substitute to avoid a native build. Revisit with the client's approval.
 - [x] First sign-in forces a password change (tested).
-- [x] Secrets only from environment variables. `env.js` refuses to start in production without `MONGODB_URI`, `SESSION_SECRET`, `SMTP_HOST` and `MAIL_FROM`.
+- [x] Secrets only from environment variables. `env.js` refuses to start in production without `MONGODB_URI` and `SESSION_SECRET`.
 - [x] Logs redact patient fields, notes, messages, passwords, cookies and authorization headers. Error messages are not logged, only the error name and code.
 
 ## Patient data (Nigeria Data Protection Act 2023)
@@ -49,7 +49,7 @@ Status against docs/05 §Security. Ticked means built and tested in this repo. O
 - [x] Audit log for admin changes. Diffs hold settings values only, never notes.
 
 ## Dependencies
-- [x] `npm audit --omit=dev` reports zero findings after the nodemailer upgrade.
+- [x] `npm audit --omit=dev` reports zero findings.
 - [x] Dependabot configured (`.github/dependabot.yml`).
 
 ## Backups

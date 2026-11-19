@@ -34,7 +34,6 @@ const settingsBody = z.object({
   unpaidHoldMinutes: z.number().int().min(15).max(1440).optional(),
   cancellationNoticeHours: z.number().int().min(0).max(240).optional(),
   hoursArePlaceholder: z.boolean().optional(),
-  notifyEmails: z.array(z.string().email()).max(5).optional(),
 });
 
 const typeBody = z.object({

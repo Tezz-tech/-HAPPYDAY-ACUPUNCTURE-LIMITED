@@ -29,9 +29,6 @@ Recommended setup from docs/05 §Hosting. Two deploys: the static web app, and t
 | `SESSION_SECRET` | yes | 32 or more random characters. Generate with `openssl rand -base64 48` |
 | `WEB_ORIGIN` | yes | `https://<domain>` |
 | `API_ORIGIN` | yes | `https://api.<domain>` |
-| `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` | yes | Resend, Zoho or Brevo SMTP. Set SPF, DKIM and DMARC on the domain |
-| `MAIL_FROM` | yes | For example `Happyday Acupuncture <bookings@<domain>>` |
-| `NOTIFY_EMAILS` | no | Comma-separated clinic addresses for new bookings and payments |
 | `ADMIN_EMAIL` | yes (first deploy) | The owner's sign-in email |
 | `ADMIN_INITIAL_PASSWORD` | yes (first deploy) | At least 12 characters. The owner must change it on first sign-in. Remove it from the environment afterwards |
 | `LOG_LEVEL` | no | Defaults to `info` |
@@ -45,8 +42,6 @@ Recommended setup from docs/05 §Hosting. Two deploys: the static web app, and t
 6. Check the CSP on the live site. Any blocked script shows in the browser console; fix before launch.
 
 ## 5. Email
-- Add the SPF, DKIM and DMARC records the SMTP provider gives you. Send a test to a Gmail and a Yahoo address and check they land in the inbox.
-- Email sending is not built yet (see the gaps list in PROGRESS.md). Configure the variables now so they are ready.
 
 ## 6. Verify before announcing
 - [ ] Home loads on a Moto G-class phone over throttled 4G (Lighthouse CI, see `lighthouserc.json`).

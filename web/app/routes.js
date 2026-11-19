@@ -2,7 +2,7 @@ import { index, layout, route } from '@react-router/dev/routes';
 
 /**
  * Route table (docs/05). Marketing pages share the site layout and are prerendered.
- * The styleguide is dev-only. The booking and admin routes sit outside the site layout (Phase 5 and 6).
+ * The booking and admin routes sit outside the site layout (Phase 5 and 6).
  */
 export default [
   layout('routes/site-layout.jsx', [
@@ -21,5 +21,4 @@ export default [
   route('book/confirmed/:ref', 'routes/book-confirmed.jsx'),
   route('booking/:ref', 'routes/booking.jsx'),
   route('admin', 'routes/admin.jsx'),
-  route('styleguide', 'routes/styleguide.jsx'),
 ];

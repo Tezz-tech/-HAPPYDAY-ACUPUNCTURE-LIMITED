@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const out = path.join(root, 'screenshots');
 const BASE = process.env.BASE_URL ?? 'http://localhost:5173';
-const ROUTES = (process.env.ROUTES ?? '/,/about,/treatments,/treatments/pain-relief,/your-visit,/contact,/styleguide').split(',');
+const ROUTES = (process.env.ROUTES ?? '/,/about,/treatments,/treatments/pain-relief,/your-visit,/contact').split(',');
 const WIDTHS = [390, 768, 1440];
 
 async function main() {

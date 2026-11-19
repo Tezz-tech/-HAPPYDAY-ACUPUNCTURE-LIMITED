@@ -9,7 +9,7 @@ test.describe('admin', () => {
     await page.getByLabel('Password', { exact: true }).fill('dev-owner-password-1');
     await page.getByRole('button', { name: 'Sign in' }).click();
 
-    await expect(page.getByRole('heading', { name: 'Choose a new password' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Set a new password' })).toBeVisible();
     await page.getByLabel('Current password').fill('dev-owner-password-1');
     await page.getByLabel('New password').fill('a-new-long-password-2');
     await page.getByRole('button', { name: 'Save new password' }).click();

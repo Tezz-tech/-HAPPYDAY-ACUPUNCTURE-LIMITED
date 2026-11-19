@@ -1,11 +1,10 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('booking flow', () => {
-  test('from the body map to a transfer and a confirmation with a reference', async ({ page }) => {
-    await page.goto('/');
-    await page.getByRole('button', { name: 'Back & hips' }).click();
-    await page.getByRole('link', { name: 'Book about this' }).click();
-    await expect(page).toHaveURL(/\/book\?concern=back-hips/);
+  test('from a treatment page to a transfer and a confirmation with a reference', async ({ page }) => {
+    await page.goto('/treatments/pain-relief');
+    await page.getByRole('link', { name: 'Book about pain relief' }).click();
+    await expect(page).toHaveURL(/\/book\?concern=pain-relief/);
 
     // Step 1: the concern. The chip is clicked to move on.
     await page.getByRole('button', { name: 'Pain relief', exact: true }).click();
