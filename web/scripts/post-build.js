@@ -13,8 +13,6 @@ import { SITE_URL } from '../app/lib/site-url.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const client = path.resolve(here, '../build/client');
-// The API origin the browser may call. Empty when the web app proxies /api to the API project (vercel.json).
-const API_ORIGIN = (process.env.VITE_API_ORIGIN ?? '').trim();
 
 /** @param {string} dir @returns {Promise<string[]>} */
 async function htmlFiles(dir) {
@@ -60,7 +58,7 @@ async function main() {
     "style-src-attr 'unsafe-inline'",
     "img-src 'self' data: https://maps.gstatic.com https://maps.googleapis.com",
     "font-src 'self'",
-    ['connect-src', "'self'", API_ORIGIN].filter(Boolean).join(' '),
+    "connect-src 'self'",
     'frame-src https://www.google.com',
     "object-src 'none'",
     "base-uri 'self'",

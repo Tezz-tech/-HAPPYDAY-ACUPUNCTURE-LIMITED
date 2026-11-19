@@ -4,7 +4,7 @@
   "buildCommand": "cd .. && npm run build -w web",
   "outputDirectory": "build/client",
   "routes": [
-    { "src": "/api/(.*)", "dest": "https://happyday-acupuncture-limited-9y43.vercel.app/api/$1" },
+    { "src": "/api/(.*)", "dest": "https://happyday-acupuncture-limited-m94m.vercel.app/api/$1" },
     { "handle": "filesystem" },
     { "src": "/(assets|photos|fonts|brand|stock)/(.*)", "status": 404, "dest": "/404.html" },
     { "src": "/(.*)", "dest": "/__spa-fallback.html" }

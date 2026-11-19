@@ -1,6 +1,7 @@
 // Thin fetch wrapper for the API (docs/05 error shape: { error: { code, message, fields?, alternatives? } }).
-// In development the Vite proxy forwards /api to :4000. In production set VITE_API_ORIGIN to the API host.
-const BASE = import.meta.env.VITE_API_ORIGIN ?? '';
+// Always same-origin. In development the Vite proxy forwards /api to :4000; in production vercel.json forwards /api to the
+// API project. Calling the API on another domain would need CORS and would not send the admin login cookie.
+const BASE = '';
 
 export class ApiError extends Error {
   /**
