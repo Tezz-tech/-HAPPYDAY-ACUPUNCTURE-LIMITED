@@ -13,12 +13,15 @@ Recommended setup from docs/05 §Hosting. Two deploys: the static web app, and t
 3. Allow the API host's outbound IPs (or allow access from anywhere and rely on the credentials, with a strong password).
 4. Copy the connection string into `MONGODB_URI`.
 
-## 3. API: Render, Railway or Fly.io
-1. Create a web service from this repository, root directory `api`.
-2. Build command: `npm ci`. Start command: `node src/server.js`. Node version: 24 (see `.nvmrc`).
-3. Set the environment variables below.
-4. After the first deploy, run the seed once (`npm run seed -w api`) with the production `MONGODB_URI`. It is idempotent.
-5. Check `https://api.<domain>/api/v1/health` returns `{ "ok": true }`.
+## 3. API on Vercel (second project)
+
+The API is a separate Vercel project built from the same repository.
+
+1. In Vercel, **Add New Project**, import the repository, and set **Root Directory** to `api`. Vercel reads `api/vercel.json` and `api/index.js` automatically. Do not change the install command.
+2. Add the environment variables below (Production), and also `CRON_SECRET` (at least 16 random characters).
+3. Deploy. Check that `https://<api-project>.vercel.app/api/v1/health` returns `{ "ok": true }`.
+4. Vercel Cron calls `/api/v1/internal/expire-holds` every five minutes. It needs `CRON_SECRET` set. The Hobby plan only runs crons once a day, so use a plan that allows five-minute crons.
+5. Atlas must accept connections from Vercel. Allow `0.0.0.0/0` on the Atlas network list, and rely on the database user's password.
 
 ### Environment variables (API)
 
@@ -32,14 +35,16 @@ Recommended setup from docs/05 §Hosting. Two deploys: the static web app, and t
 | `ADMIN_EMAIL` | yes (first deploy) | The owner's sign-in email |
 | `ADMIN_INITIAL_PASSWORD` | yes (first deploy) | At least 12 characters. The owner must change it on first sign-in. Remove it from the environment afterwards |
 | `LOG_LEVEL` | no | Defaults to `info` |
+| `CRON_SECRET` | yes (Vercel) | At least 16 random characters. Vercel Cron sends it to the expiry job |
 
-## 4. Web: Cloudflare Pages
-1. Create a Pages project from this repository.
-2. Build command: `npm ci && npm run build -w web`. Build output directory: `web/build/client`.
-3. Environment variable `VITE_API_ORIGIN=https://api.<domain>` (the browser calls the API directly).
-4. Set the custom domain. Pages serves `_headers` (CSP and security headers) and `404.html` from the build.
-5. Fallback routing: Pages serves `__spa-fallback.html` for `/book/*`, `/booking/*` and `/admin/*` through its SPA setting. Confirm `/book` and `/admin` load directly, not only from inside the site.
-6. Check the CSP on the live site. Any blocked script shows in the browser console; fix before launch.
+## 4. Web on Vercel (first project)
+
+1. In Vercel, **Add New Project**, import the same repository, and set **Root Directory** to `web`. Vercel reads `web/vercel.json`.
+2. **Before the first deploy**, edit `web/vercel.json` and replace `REPLACE-WITH-API-HOST` with the API project's address from section 3 (for example `happyday-api.vercel.app`). Until you do, booking and admin calls fail.
+3. Leave `VITE_API_ORIGIN` empty. The web app calls `/api` on its own domain, and Vercel forwards it to the API. This keeps the admin login cookie working.
+4. Set the custom domain (`happydayacupuncture.com`). Set the API's `WEB_ORIGIN` to that domain.
+5. Reloads: `/admin`, `/book` and `/booking/<ref>` are served by the app shell, so a refresh on those pages loads them directly. Check each one with a browser refresh.
+6. The security policy is written into every page, and the API proxy is set in `vercel.json`. Check the browser console on the live site for any blocked script or style, and fix it before launch.
 
 ## 5. Email
 

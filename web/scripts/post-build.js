@@ -1,8 +1,9 @@
 // Post-build steps for the static host (Cloudflare Pages, docs/05):
 //  - sitemap.xml and robots.txt
 //  - 404.html copied from the prerendered /404 page
-//  - _headers with a strict Content-Security-Policy. Inline scripts from React Router's
-//    hydration are allowed by SHA-256 hash, computed from the built HTML, so unsafe-inline is never needed.
+//  - a strict Content-Security-Policy written into every page as a <meta> tag. Vercel does not read
+//    the _headers file, so the policy travels with the HTML. Inline scripts from React Router's hydration
+//    are allowed by SHA-256 hash, computed from the built HTML, so unsafe-inline is never needed.
 import { createHash } from 'node:crypto';
 import { copyFile, readFile, readdir, writeFile, stat } from 'node:fs/promises';
 import path from 'node:path';
@@ -12,6 +13,8 @@ import { SITE_URL } from '../app/lib/site-url.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const client = path.resolve(here, '../build/client');
+// The API origin the browser may call. Empty when the web app proxies /api to the API project (vercel.json).
+const API_ORIGIN = (process.env.VITE_API_ORIGIN ?? '').trim();
 
 /** @param {string} dir @returns {Promise<string[]>} */
 async function htmlFiles(dir) {
@@ -57,7 +60,7 @@ async function main() {
     "style-src-attr 'unsafe-inline'",
     "img-src 'self' data: https://maps.gstatic.com https://maps.googleapis.com",
     "font-src 'self'",
-    "connect-src 'self'",
+    ['connect-src', "'self'", API_ORIGIN].filter(Boolean).join(' '),
     'frame-src https://www.google.com',
     "object-src 'none'",
     "base-uri 'self'",
@@ -65,23 +68,13 @@ async function main() {
     'upgrade-insecure-requests',
   ].join('; ');
 
-  const headers = [
-    '/*',
-    `  Content-Security-Policy: ${csp}`,
-    '  Strict-Transport-Security: max-age=31536000; includeSubDomains',
-    '  Referrer-Policy: strict-origin-when-cross-origin',
-    "  Permissions-Policy: camera=(), microphone=(), geolocation=()",
-    '  X-Content-Type-Options: nosniff',
-    '  X-Frame-Options: DENY',
-    '',
-    '/assets/*',
-    '  Cache-Control: public, max-age=31536000, immutable',
-    '',
-    '/photos/*',
-    '  Cache-Control: public, max-age=2592000',
-    '',
-  ].join('\n');
-  await writeFile(path.join(client, '_headers'), headers);
+  // Write the policy into every page. The security headers that do not depend on hashes are set in vercel.json.
+  const meta = `<meta http-equiv="Content-Security-Policy" content="${csp}">`;
+  for (const file of files) {
+    const html = await readFile(file, 'utf8');
+    if (html.includes('http-equiv="Content-Security-Policy"')) continue;
+    await writeFile(file, html.replace(/<head>/i, `<head>${meta}`));
+  }
 
   const routes = typeof config.prerender === 'function' ? await config.prerender() : config.prerender;
   const today = new Date().toISOString().slice(0, 10);
