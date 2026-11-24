@@ -17,7 +17,7 @@ Living log for the build. `/next-phase` reads this to find where to pick up. Upd
 
 ## Recent update
 
-- Added the consent-confirmed treatment photo to Your visit in the clinic duotone, with responsive formats and a manifest width cap.
+- Added the consent-confirmed treatment photo to Your visit in the clinic duotone, preserving its full portrait aspect ratio with responsive formats and a manifest width cap.
 - Split-feature photos now honour their manifest width cap. Reduced-motion screenshots scroll before capture so lazy images appear.
 - The Your visit page passes build, copy lint, ESLint, axe at 360/390/768/1440 px, keyboard-focus, and no-overflow checks; the header logo's accessible name was adjusted after QA.
 

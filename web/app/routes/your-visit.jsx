@@ -53,7 +53,12 @@ export default function YourVisit() {
       </section>
 
       <section className="section" aria-labelledby="session-title">
-        <SplitFeature photo="visit-treatment-session-duotone" sizes="(min-width: 900px) 42vw, 92vw" reverse>
+        <SplitFeature
+          photo="visit-treatment-session-duotone"
+          sizes="(min-width: 900px) 42vw, 92vw"
+          mediaAspectRatio="608 / 1080"
+          reverse
+        >
           <SectionHead id="session-title" title="A session in progress" />
           <p className="type-body">
             The approach is based on your initial assessment and discussed with you before treatment begins.

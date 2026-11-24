@@ -1047,7 +1047,7 @@
   margin: 0;
 }
 .split-media .pic-frame {
-  aspect-ratio: 4 / 5 !important;
+  aspect-ratio: var(--split-media-aspect-ratio, 4 / 5) !important;
   border-radius: var(--radius-lg);
   overflow: hidden;
 }
