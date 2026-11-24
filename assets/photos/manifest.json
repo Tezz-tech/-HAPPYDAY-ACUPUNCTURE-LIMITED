@@ -450,6 +450,36 @@
       "alt": "Needles placed at the forehead and between the brows, seen from above. (green-toned version)",
       "notes": "",
       "privacy": "no identifiable face"
+    },
+    {
+      "id": "visit-treatment-session",
+      "folder": "detail",
+      "files": {
+        "avif": "detail/visit-treatment.avif",
+        "webp": "detail/visit-treatment.webp",
+        "jpg": "detail/visit-treatment.jpg"
+      },
+      "width": 608,
+      "height": 1080,
+      "maxDisplayWidthCss": 405,
+      "alt": "A patient lying on a treatment bed during an acupuncture session, with leads attached to the legs.",
+      "notes": "Client-supplied photo for the Your visit page; written consent confirmed.",
+      "privacy": "written consent confirmed"
+    },
+    {
+      "id": "visit-treatment-session-duotone",
+      "folder": "duotone",
+      "files": {
+        "avif": "duotone/visit-treatment-session-duotone.avif",
+        "webp": "duotone/visit-treatment-session-duotone.webp",
+        "jpg": "duotone/visit-treatment-session-duotone.jpg"
+      },
+      "width": 608,
+      "height": 1080,
+      "maxDisplayWidthCss": 405,
+      "alt": "A patient lying on a treatment bed during an acupuncture session, with leads attached to the legs.",
+      "notes": "Ink-to-paper duotone for the Your visit page.",
+      "privacy": "written consent confirmed"
     }
   ]
 }

@@ -33,7 +33,14 @@ async function main() {
     }
     const motion = await browser.newPage({ viewport: { width: 390, height: 900 }, reducedMotion: 'reduce' });
     await motion.goto(`${BASE}${route}`, { waitUntil: 'networkidle' });
-    await motion.waitForTimeout(800);
+    await motion.evaluate(async () => {
+      for (let y = 0; y < document.body.scrollHeight; y += 400) {
+        window.scrollTo(0, y);
+        await new Promise((r) => setTimeout(r, 60));
+      }
+      window.scrollTo(0, 0);
+    });
+    await motion.waitForTimeout(1500);
     await motion.screenshot({ path: path.join(out, `${name}-390-reduced-motion.png`), fullPage: true });
     await motion.close();
   }

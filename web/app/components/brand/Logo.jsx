@@ -20,7 +20,7 @@ export function Logo({ variant = 'horizontal', tone = 'light', link = true, clas
       />
     );
     return link ? (
-      <Link to="/" className="logo-link" aria-label="Happyday Acupuncture, home">
+      <Link to="/" className="logo-link" aria-label="Happyday Acupuncture">
         {img}
       </Link>
     ) : (
@@ -39,7 +39,7 @@ export function Logo({ variant = 'horizontal', tone = 'light', link = true, clas
   );
   const classes = `logo logo-horizontal logo-${tone} ${className}`.trim();
   return link ? (
-    <Link to="/" className={classes} aria-label="Happyday Acupuncture, home">
+    <Link to="/" className={classes}>
       {content}
     </Link>
   ) : (

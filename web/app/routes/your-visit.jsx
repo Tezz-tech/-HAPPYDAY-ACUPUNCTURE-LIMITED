@@ -52,6 +52,15 @@ export default function YourVisit() {
         <VisitExplorer />
       </section>
 
+      <section className="section" aria-labelledby="session-title">
+        <SplitFeature photo="visit-treatment-session-duotone" sizes="(min-width: 900px) 42vw, 92vw" reverse>
+          <SectionHead id="session-title" title="A session in progress" />
+          <p className="type-body">
+            The approach is based on your initial assessment and discussed with you before treatment begins.
+          </p>
+        </SplitFeature>
+      </section>
+
       <section className="section section-dark" aria-labelledby="scale-title">
         <SectionHead
           id="scale-title"

@@ -419,6 +419,34 @@ export const PHOTOS = {
     "maxDisplayWidthCss": 266,
     "alt": "Needles placed at the forehead and between the brows, seen from above. (green-toned version)",
     "privacy": "no identifiable face"
+  },
+  "visit-treatment-session": {
+    "id": "visit-treatment-session",
+    "folder": "detail",
+    "files": {
+      "avif": "detail/visit-treatment.avif",
+      "webp": "detail/visit-treatment.webp",
+      "jpg": "detail/visit-treatment.jpg"
+    },
+    "width": 608,
+    "height": 1080,
+    "maxDisplayWidthCss": 405,
+    "alt": "A patient lying on a treatment bed during an acupuncture session, with leads attached to the legs.",
+    "privacy": "written consent confirmed"
+  },
+  "visit-treatment-session-duotone": {
+    "id": "visit-treatment-session-duotone",
+    "folder": "duotone",
+    "files": {
+      "avif": "duotone/visit-treatment-session-duotone.avif",
+      "webp": "duotone/visit-treatment-session-duotone.webp",
+      "jpg": "duotone/visit-treatment-session-duotone.jpg"
+    },
+    "width": 608,
+    "height": 1080,
+    "maxDisplayWidthCss": 405,
+    "alt": "A patient lying on a treatment bed during an acupuncture session, with leads attached to the legs.",
+    "privacy": "written consent confirmed"
   }
 };
 export const LQIP = {
@@ -451,5 +479,7 @@ export const LQIP = {
   "treatment-lower-leg-duotone": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAVABADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQD/xAAfEAACAgIDAAMAAAAAAAAAAAABAgADBBEFEiExQVH/xAAWAQEBAQAAAAAAAAAAAAAAAAABAAL/xAAVEQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEQMRAD8AQsHS5H18nRgufkNh5twQaLegxvIcFq/ztB+exi7tYv1Bmk83S8ktSjSr7LJQWVOGlKRf/9k=",
   "treatment-scalp-points-duotone": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAATABADASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAABAADBv/EACAQAAIBBAEFAAAAAAAAAAAAAAABAgMEESETBQYUMXH/xAAWAQEBAQAAAAAAAAAAAAAAAAABAAL/xAAVEQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEQMRAD8Ad3FfOhS4acsSn7+HK8jFdUuvKuZTecgG8AxaTPb2YSS3oiIP/9k=",
   "treatment-topdown-head-duotone": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAVABADASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMFAgT/xAAhEAACAQUAAQUAAAAAAAAAAAABAgMABAUREiEyQVFhcf/EABYBAQEBAAAAAAAAAAAAAAAAAAEAAv/EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oADAMBAAIRAxEAPwCi1wDM5Z213zr6pVxcAqI1k323PPvXHmWlsmeRfSzeP2kY5p8gV5QDlwS/xQzVHKxpMAki7Fbx8CW0YWIaBOzRRUX/2Q==",
-  "yintang-forehead-duotone": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAALABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAwQF/8QAHBABAAIDAQEBAAAAAAAAAAAAAQMRAAIEIQUx/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQL/xAAVEQEBAAAAAAAAAAAAAAAAAAAAEf/aAAwDAQACEQMRAD8Aml7yKRNmhb8xebsinnCQNoz9vMb6Aa9kmupQPhgxqXTgiv/Z"
+  "yintang-forehead-duotone": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAALABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAwQF/8QAHBABAAIDAQEBAAAAAAAAAAAAAQMRAAIEIQUx/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQL/xAAVEQEBAAAAAAAAAAAAAAAAAAAAEf/aAAwDAQACEQMRAD8Aml7yKRNmhb8xebsinnCQNoz9vMb6Aa9kmupQPhgxqXTgiv/Z",
+  "visit-treatment-session": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAcABADASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAABAECA//EACIQAAIBBAEEAwAAAAAAAAAAAAECAwAEESESIzFBkUNRYf/EABcBAAMBAAAAAAAAAAAAAAAAAAABAgP/xAAZEQACAwEAAAAAAAAAAAAAAAAAEQESIUH/2gAMAwEAAhEDEQA/AJlkN3Iz4BTxyq1vK1s5BAA/O1GlBL8V0PoUq0haWN9cq0WongaJiWd2wMjVJsL026tGcbOjTXSMfFH6rMRxEHpJ6pWgEf/Z",
+  "visit-treatment-session-duotone": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAcABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAwIE/8QAIhAAAgICAQMFAAAAAAAAAAAAAQIDEQAEIRIjkTFBUVNh/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQAC/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8ASRzsuzUOn2vKgkMDEVQ/MCQEvS8D4GaNWJpI346sGQRklnZqFjjH0tswhkNcn1zUyp9aeMgJHR7aeMi//9k="
 };
